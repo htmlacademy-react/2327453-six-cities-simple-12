@@ -1,4 +1,8 @@
-﻿function PlaceCard(cardNumber:number): JSX.Element {
+﻿type PlaceCardProps = {
+  cardNumber : number
+}
+
+function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
   switch (cardNumber)
   {
     case 0:
