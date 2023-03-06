@@ -1,10 +1,10 @@
-﻿import React from "react";
-import PlaceCard from "../../components/place-card/place-card";
+﻿import React from 'react';
+import PlaceCard from '../../components/place-card/place-card';
 
 const addPlaceCards = (count : number) => {
-  let placeCards = [];
+  const placeCards = [];
   for (let i = 0; i < count; i++) {
-    placeCards.push(<PlaceCard cardNumber={0} key={i} />); // TODO: is 'key' argument need here, when there is cardNumber argument
+    placeCards.push(<PlaceCard cardNumber={i} key={i} />); // TODO: is 'key' argument need here, when there is cardNumber argument
   }
   return placeCards;
 };
