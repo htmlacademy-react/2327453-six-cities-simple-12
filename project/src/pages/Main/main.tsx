@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import PlaceCard from '../../components/place-card/place-card';
 
 type MainProps = {

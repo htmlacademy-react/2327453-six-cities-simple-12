@@ -1,4 +1,4 @@
-﻿function Propery(): JSX.Element {
+function Propery(): JSX.Element {
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -99,10 +99,10 @@
                 </div>
                 <span className="property__user-name">
                     Angelina
-                  </span>
+                </span>
                 <span className="property__user-status">
                     Pro
-                  </span>
+                </span>
               </div>
               <div className="property__description">
                 <p className="property__text">
@@ -123,7 +123,7 @@
                     </div>
                     <span className="reviews__user-name">
                         Max
-                      </span>
+                    </span>
                   </div>
                   <div className="reviews__info">
                     <div className="reviews__rating rating">

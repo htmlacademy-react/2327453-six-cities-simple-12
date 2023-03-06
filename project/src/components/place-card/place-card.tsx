@@ -1,4 +1,4 @@
-﻿type PlaceCardProps = {
+type PlaceCardProps = {
   cardNumber : number;
 }
 
