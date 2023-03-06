@@ -280,3 +280,5 @@
     </main>
   );
 }
+
+export default Propery;
