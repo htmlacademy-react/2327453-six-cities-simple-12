@@ -4,7 +4,7 @@ import PlaceCard from '../../components/place-card/place-card';
 const addPlaceCards = (count : number) => {
   const placeCards = [];
   for (let i = 0; i < count; i++) {
-    placeCards.push(<PlaceCard cardNumber={i} key={i} />); // TODO: is 'key' argument need here, when there is cardNumber argument
+    placeCards.push(<PlaceCard cardNumber={i} key={i} />);
   }
   return placeCards;
 };
