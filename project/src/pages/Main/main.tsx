@@ -1,6 +1,10 @@
 ﻿import React from 'react';
 import PlaceCard from '../../components/place-card/place-card';
 
+type MainProps = {
+  placeCardsCount : number;
+}
+
 const addPlaceCards = (count : number) => {
   const placeCards = [];
   for (let i = 0; i < count; i++) {
@@ -9,7 +13,7 @@ const addPlaceCards = (count : number) => {
   return placeCards;
 };
 
-function Main(): JSX.Element
+function Main({ placeCardsCount }:MainProps): JSX.Element
 {
   return (
     <main className="page__main page__main--index">
@@ -71,7 +75,7 @@ function Main(): JSX.Element
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              { addPlaceCards(5) }
+              { addPlaceCards(placeCardsCount) }
             </div>
           </section>
           <div className="cities__right-section">
