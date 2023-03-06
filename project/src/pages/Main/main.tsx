@@ -13,7 +13,7 @@ const addPlaceCards = (count : number) => {
   return placeCards;
 };
 
-function Main({ placeCardsCount }:MainProps): JSX.Element
+function Main({ placeCardsCount } : MainProps) : JSX.Element
 {
   return (
     <main className="page__main page__main--index">
