@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body class="page page--gray page--main">
   <div style="display: none">
     <svg xmlns="http://www.w3.org/2000/svg">
       <symbol id="icon-arrow-select" viewbox="0 0 7 4">
@@ -24,6 +24,32 @@
     </svg>
   </div>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="header__left">
+          <a class="header__logo-link header__logo-link--active">
+            <img class="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41">
+          </a>
+        </div>
+        <nav class="header__nav">
+          <ul class="header__nav-list">
+            <li class="header__nav-item user">
+              <div class="header__nav-profile">
+                <div class="header__avatar-wrapper user__avatar-wrapper"></div>
+                <span class="header__user-name user__name">Oliver.conner@gmail.com</span>
+              </div>
+            </li>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#">
+                <span class="header__signout">Sign out</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
   <div id="root"></div>
 </body>
 </html>
