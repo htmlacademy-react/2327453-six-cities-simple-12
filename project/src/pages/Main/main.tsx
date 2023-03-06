@@ -2,11 +2,11 @@
 import PlaceCard from "../../components/place-card/place-card";
 
 const addPlaceCards = (count : number) => {
-  let content = [];
+  let placeCards = [];
   for (let i = 0; i < count; i++) {
-    content.push(<PlaceCard cardNumber={0} key={i} />); // TODO: is 'key' argument need here, when there is cardNumber argument
+    placeCards.push(<PlaceCard cardNumber={0} key={i} />); // TODO: is 'key' argument need here, when there is cardNumber argument
   }
-  return content;
+  return placeCards;
 };
 
 function Main(): JSX.Element
@@ -80,7 +80,7 @@ function Main(): JSX.Element
         </div>
       </div>
     </main>
-  )
+  );
 }
 
 export default Main;

@@ -36,7 +36,7 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
             <p className="place-card__type">Apartment</p>
           </div>
         </article>
-      )
+      );
       break;
     case 1:
       return (
@@ -65,7 +65,7 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
             <p className="place-card__type">Private room</p>
           </div>
         </article>
-      )
+      );
       break;
     case 2:
       return (
@@ -94,7 +94,7 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
             <p className="place-card__type">Apartment</p>
           </div>
         </article>
-      )
+      );
       break;
     case 3:
       return (
@@ -126,7 +126,7 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
             <p className="place-card__type">Apartment</p>
           </div>
         </article>
-      )
+      );
       break;
     default:
       return (
@@ -155,7 +155,7 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
             <p className="place-card__type">Private room</p>
           </div>
         </article>
-      )
+      );
       break;
   }
 }
