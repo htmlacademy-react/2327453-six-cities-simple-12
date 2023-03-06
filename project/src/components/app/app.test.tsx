@@ -4,9 +4,9 @@ import App from './app';
 test('Renders expected place cards', () => {
   const placeCardsCount = 5;
 
-  const {container} = render(<App placeCardsCount={placeCardsCount}/>);
+  render(<App placeCardsCount={placeCardsCount}/>);
 
-  const placeCards = container.getElementsByClassName('place-card')
+  const articles = screen.getAllByRole('article');
 
-  expect(placeCards.length).toBe(2);
+  expect(articles.length).toBe(placeCardsCount);
 });
