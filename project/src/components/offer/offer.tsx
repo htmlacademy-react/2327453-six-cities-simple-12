@@ -1,11 +1,10 @@
 import {Offer} from "../../types/offer";
 
 type OfferProps = {
-  cardNumber : number;
   offer : Offer;
 }
 
-function Offer({ cardNumber, offer }:OfferProps): JSX.Element {
+function Offer({ offer }:OfferProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       {offer.isPremium &&
