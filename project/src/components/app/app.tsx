@@ -10,7 +10,7 @@ type AppProps = {
   offers: Offers
 }
 
-function App({ placeCardsCount } : AppProps): JSX.Element {
+function App({ placeCardsCount, offers } : AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
