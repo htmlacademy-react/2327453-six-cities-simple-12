@@ -3,4 +3,4 @@
   name: string;
   isPro: boolean;
   avatarUrl: string;
-}
+};
