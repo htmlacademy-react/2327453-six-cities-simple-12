@@ -20,4 +20,6 @@ export type Offer = {
   "description": string;
   location: Location;
   id: number;
-}
+};
+
+export type Offers = Offer[];
