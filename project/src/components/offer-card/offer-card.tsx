@@ -1,10 +1,10 @@
 import {Offer} from '../../types/offer';
 
-type OfferProps = {
+type OfferCardProps = {
   offer : Offer;
 }
 
-function Offer({ offer }:OfferProps): JSX.Element {
+function OfferCard({ offer }:OfferCardProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       {offer.isPremium &&
@@ -39,4 +39,4 @@ function Offer({ offer }:OfferProps): JSX.Element {
   );
 }
 
-export default Offer;
+export default OfferCard;
