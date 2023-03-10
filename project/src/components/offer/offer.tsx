@@ -6,161 +6,39 @@ type OfferProps = {
 }
 
 function Offer({ cardNumber, offer }:OfferProps): JSX.Element {
-  switch (cardNumber)
-  {
-    case 0:
-      return (
-        <article className="cities__card place-card">
-          <div className="place-card__mark">
-            <span>Premium</span>
+  return (
+    <article className="cities__card place-card">
+      {offer.isPremium &&
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
+      <div className="cities__image-wrapper place-card__image-wrapper">
+        <a href="#">
+          <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
+        </a>
+      </div>
+      <div className="place-card__info">
+        <div className="place-card__price-wrapper">
+          <div className="place-card__price">
+            <b className="place-card__price-value">&euro;{offer.price}</b>
+            <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src="img/apartment-01.jpg" width="260" height="200" alt="Place image"/>
-            </a>
-          </div>
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;120</b>
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
 
-            </div>
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: '80%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <h2 className="place-card__name">
-              <a href="#">Beautiful &amp; luxurious apartment at great location</a>
-            </h2>
-            <p className="place-card__type">Apartment</p>
+        </div>
+        <div className="place-card__rating rating">
+          <div className="place-card__stars rating__stars">
+            <span style={{width: '80%'}}></span>
+            <span className="visually-hidden">{offer.rating}</span>
           </div>
-        </article>
-      );
-      break;
-    case 1:
-      return (
-        <article className="cities__card place-card">
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
-            </a>
-          </div>
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;80</b>
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
-            </div>
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: '80%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <h2 className="place-card__name">
-              <a href="#">Wood and stone place</a>
-            </h2>
-            <p className="place-card__type">Private room</p>
-          </div>
-        </article>
-      );
-      break;
-    case 2:
-      return (
-        <article className="cities__card place-card">
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src="img/apartment-02.jpg" width="260" height="200" alt="Place image"/>
-            </a>
-          </div>
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;132</b>
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
-            </div>
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: '80%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <h2 className="place-card__name">
-              <a href="#">Canal View Prinsengracht</a>
-            </h2>
-            <p className="place-card__type">Apartment</p>
-          </div>
-        </article>
-      );
-      break;
-    case 3:
-      return (
-        <article className="cities__card place-card">
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src="img/apartment-03.jpg" width="260" height="200" alt="Place image"/>
-            </a>
-          </div>
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;180</b>
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
-            </div>
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: '100%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <h2 className="place-card__name">
-              <a href="#">Nice, cozy, warm big bed apartment</a>
-            </h2>
-            <p className="place-card__type">Apartment</p>
-          </div>
-        </article>
-      );
-      break;
-    default:
-      return (
-        <article className="cities__card place-card">
-          <div className="cities__image-wrapper place-card__image-wrapper">
-            <a href="#">
-              <img className="place-card__image" src="img/room.jpg" width="260" height="200" alt="Place image"/>
-            </a>
-          </div>
-          <div className="place-card__info">
-            <div className="place-card__price-wrapper">
-              <div className="place-card__price">
-                <b className="place-card__price-value">&euro;80</b>
-                <span className="place-card__price-text">&#47;&nbsp;night</span>
-              </div>
-            </div>
-            <div className="place-card__rating rating">
-              <div className="place-card__stars rating__stars">
-                <span style={{width: '80%'}}></span>
-                <span className="visually-hidden">Rating</span>
-              </div>
-            </div>
-            <h2 className="place-card__name">
-              <a href="#">Wood and stone place</a>
-            </h2>
-            <p className="place-card__type">Private room</p>
-          </div>
-        </article>
-      );
-      break;
-  }
+        </div>
+        <h2 className="place-card__name">
+          <a href="#">{offer.title}</a>
+        </h2>
+        <p className="place-card__type">{offer.type}</p>
+      </div>
+    </article>
+  );
 }
 
 export default Offer;
