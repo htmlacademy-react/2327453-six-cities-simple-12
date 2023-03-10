@@ -1,19 +1,12 @@
 import React from 'react';
-import PlaceCard from '../../components/place-card/place-card';
+import {Offers} from "../../types/offer";
+import OffersList from "../../components/offers-list/offers-list";
 
 type MainProps = {
-  placeCardsCount : number;
+  offers : Offers;
 }
 
-const addPlaceCards = (count : number) => {
-  const placeCards = [];
-  for (let i = 0; i < count; i++) {
-    placeCards.push(<PlaceCard cardNumber={i} key={i} />);
-  }
-  return placeCards;
-};
-
-function Main({ placeCardsCount } : MainProps) : JSX.Element
+function Main({ offers } : MainProps) : JSX.Element
 {
   return (
     <main className="page__main page__main--index">
@@ -75,7 +68,7 @@ function Main({ placeCardsCount } : MainProps) : JSX.Element
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              { addPlaceCards(placeCardsCount) }
+              <OffersList offers={offers}/>
             </div>
           </section>
           <div className="cities__right-section">
