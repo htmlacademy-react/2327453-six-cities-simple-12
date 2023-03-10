@@ -1,8 +1,11 @@
-type PlaceCardProps = {
+import {Offer} from "../../types/offer";
+
+type OfferProps = {
   cardNumber : number;
+  offer : Offer;
 }
 
-function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
+function Offer({ cardNumber, offer }:OfferProps): JSX.Element {
   switch (cardNumber)
   {
     case 0:
@@ -160,4 +163,4 @@ function PlaceCard({ cardNumber }:PlaceCardProps): JSX.Element {
   }
 }
 
-export default PlaceCard;
+export default Offer;
