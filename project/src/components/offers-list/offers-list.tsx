@@ -9,8 +9,8 @@ function OffersList({offers}:OffersListProps): JSX.Element {
   return (
   <>
     {
-      Array.from(offers).map((offer, index) => {
-        return <Offer offer={offer} key={index}/>;
+      Array.from(offers).map((offer) => {
+        return <Offer offer={offer} key={offer.id}/>;
       })
     }
   </>
