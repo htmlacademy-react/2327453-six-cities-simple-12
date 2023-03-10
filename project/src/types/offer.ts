@@ -1,8 +1,8 @@
-﻿import {City} from "./city";
-import {Host} from "./host";
-import {Location} from "./location";
+import {City} from './city';
+import {Host} from './host';
+import {Location} from './location';
 
-export type OfferType = "room" | "house" | "apartment";
+export type OfferType = 'room' | 'house' | 'apartment';
 
 export type Offer = {
   city: City;
@@ -17,7 +17,7 @@ export type Offer = {
   price: number;
   goods: string[];
   host: Host;
-  "description": string;
+  description: string;
   location: Location;
   id: number;
 };

@@ -3,10 +3,10 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Login from '../../pages/login/login';
 import Property from '../../pages/property/property';
 import NotFound from '../../pages/not-found/not-found';
-import {Offers} from "../../types/offer";
+import {Offers} from '../../types/offer';
 
 type AppProps = {
-  offers: Offers
+  offers: Offers;
 }
 
 function App({ offers } : AppProps): JSX.Element {

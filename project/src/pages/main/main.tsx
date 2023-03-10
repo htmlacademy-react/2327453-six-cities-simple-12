@@ -1,6 +1,6 @@
 import React from 'react';
-import {Offers} from "../../types/offer";
-import OffersList from "../../components/offers-list/offers-list";
+import {Offers} from '../../types/offer';
+import OffersList from '../../components/offers-list/offers-list';
 
 type MainProps = {
   offers : Offers;
