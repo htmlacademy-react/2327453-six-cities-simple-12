@@ -15,7 +15,7 @@ function App({ offers } : AppProps): JSX.Element {
       <Routes>
         <Route path='/' element={<Main offers={offers} />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/offer/:id' element={<Property />} />
+        <Route path='/offer/:id' element={<Property offers={offers} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
