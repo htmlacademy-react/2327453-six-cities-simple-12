@@ -1,5 +1,10 @@
 import {Offers} from '../../types/offer';
-import {Navigate, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
+import NotFound from '../not-found/not-found';
+
+const PropertySettings = {
+  maxImages : 6,
+} as const;
 
 type PropertyProps = {
   offers : Offers;
@@ -12,7 +17,7 @@ function Property({offers}:PropertyProps): JSX.Element {
 
   if (currentOffer === undefined)
   {
-    return <Navigate to='/404' />;
+    return <NotFound />;
   }
 
   return (
@@ -21,7 +26,7 @@ function Property({offers}:PropertyProps): JSX.Element {
         <div className="property__gallery-container container">
           <div className="property__gallery">
             {
-              Array.from(currentOffer.images).map((image, index) =>
+              Array.from(currentOffer.images.slice(0, PropertySettings.maxImages)).map((image, index) =>
                 (
                   <div className="property__image-wrapper" key={image}>
                     <img className="property__image" src={image} alt="Photo studio"/>
