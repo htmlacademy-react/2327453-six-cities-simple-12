@@ -1,27 +1,34 @@
-function Property(): JSX.Element {
+import {Offers} from '../../types/offer';
+import {Navigate, useParams} from 'react-router-dom';
+
+type PropertyProps = {
+  offers : Offers;
+}
+
+function Property({offers}:PropertyProps): JSX.Element {
+  const params = useParams();
+  const offerId = params.id;
+  const currentOffer = offers.find((o) => o.id.toString() === offerId);
+
+  if (currentOffer === undefined)
+  {
+    return <Navigate to='/404' />;
+  }
+
   return (
     <main className="page__main page__main--property">
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/room.jpg" alt="Photo studio" />
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-            </div>
-            <div className="property__image-wrapper">
-              <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-            </div>
+            {
+              Array.from(currentOffer.images).map((image, index) =>
+                (
+                  <div className="property__image-wrapper" key={image}>
+                    <img className="property__image" src={image} alt="Photo studio"/>
+                  </div>
+                )
+              )
+            }
           </div>
         </div>
         <div className="property__container container">
