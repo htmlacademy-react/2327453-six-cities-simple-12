@@ -20,6 +20,8 @@ function Property({offers}:PropertyProps): JSX.Element {
     return <NotFound />;
   }
 
+  const rating = currentOffer.rating * 100 / 5;
+
   return (
     <main className="page__main page__main--property">
       <section className="property">
@@ -38,20 +40,21 @@ function Property({offers}:PropertyProps): JSX.Element {
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
-            <div className="property__mark">
-              <span>Premium</span>
-            </div>
+            {currentOffer.isPremium &&
+              <div className="property__mark">
+                <span>Premium</span>
+              </div>}
             <div className="property__name-wrapper">
               <h1 className="property__name">
-                Beautiful &amp; luxurious studio at great location
+                {currentOffer.title}
               </h1>
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
-                <span style={{width: '80%'}}></span>
+                <span style={{width: `${rating}%`}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="property__rating-value rating__value">4.8</span>
+              <span className="property__rating-value rating__value">{currentOffer.rating}</span>
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
@@ -65,7 +68,7 @@ function Property({offers}:PropertyProps): JSX.Element {
               </li>
             </ul>
             <div className="property__price">
-              <b className="property__price-value">&euro;120</b>
+              <b className="property__price-value">&euro;{currentOffer.price}</b>
               <span className="property__price-text">&nbsp;night</span>
             </div>
             <div className="property__inside">
