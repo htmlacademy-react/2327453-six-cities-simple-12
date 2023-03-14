@@ -97,8 +97,8 @@ export const offers: Offer[] = [
     ],
     host: {
       id: 25,
-      name: 'Angelina',
-      isPro: true,
+      name: 'Angelina not pro',
+      isPro: false,
       avatarUrl: 'img/avatar-angelina.jpg'
     },
     description: 'Peaceful studio in the most wanted area in town. Quiet house Near of everything. Completely renovated. Lovely neighbourhood, lot of trendy shops, restaurants and bars in a walking distance.',
