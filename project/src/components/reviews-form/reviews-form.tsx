@@ -1,6 +1,15 @@
-﻿function ReviewsForm() : JSX.Element {
+﻿import {FormEvent, useState} from 'react';
+import {Reviews} from '../../types/review';
+
+function ReviewsForm() : JSX.Element {
+  const [reviews, setReview] = useState<Reviews>([]);
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post"
+      onSubmit={(e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+      }}
+    >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
