@@ -14,16 +14,16 @@ type PropertyProps = {
 function Property({offers}:PropertyProps): JSX.Element {
   const params = useParams();
   const offerId = params.id;
-  const currentOffer = offers.find((o) => o.id.toString() === offerId);
+  const offer = offers.find((o) => o.id.toString() === offerId);
 
-  if (currentOffer === undefined)
+  if (offer === undefined)
   {
     return <NotFound />;
   }
 
-  const otherOffers = offers.filter((o) => o.id.toString() !== offerId)
+  const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
 
-  const rating = currentOffer.rating * 100 / 5;
+  const rating = offer.rating * 100 / 5;
 
   return (
     <main className="page__main page__main--property">
@@ -31,7 +31,7 @@ function Property({offers}:PropertyProps): JSX.Element {
         <div className="property__gallery-container container">
           <div className="property__gallery">
             {
-              Array.from(currentOffer.images.slice(0, PropertySettings.maxImages)).map((image) =>
+              Array.from(offer.images.slice(0, PropertySettings.maxImages)).map((image) =>
                 (
                   <div className="property__image-wrapper" key={image}>
                     <img className="property__image" src={image} alt="Photo studio"/>
@@ -44,14 +44,14 @@ function Property({offers}:PropertyProps): JSX.Element {
         <div className="property__container container">
           <div className="property__wrapper">
             {
-              currentOffer.isPremium &&
+              offer.isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
               </div>
             }
             <div className="property__name-wrapper">
               <h1 className="property__name">
-                {currentOffer.title}
+                {offer.title}
               </h1>
             </div>
             <div className="property__rating rating">
@@ -59,28 +59,28 @@ function Property({offers}:PropertyProps): JSX.Element {
                 <span style={{width: `${rating}%`}}></span>
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="property__rating-value rating__value">{currentOffer.rating}</span>
+              <span className="property__rating-value rating__value">{offer.rating}</span>
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                Apartment
+                {offer.type}
               </li>
               <li className="property__feature property__feature--bedrooms">
-                3 Bedrooms
+                {offer.bedrooms} Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max 4 adults
+                Max {offer.maxAdults} adults
               </li>
             </ul>
             <div className="property__price">
-              <b className="property__price-value">&euro;{currentOffer.price}</b>
+              <b className="property__price-value">&euro;{offer.price}</b>
               <span className="property__price-text">&nbsp;night</span>
             </div>
             <div className="property__inside">
               <h2 className="property__inside-title">What&apos;s inside</h2>
               <ul className="property__inside-list">
                 {
-                  Array.from(currentOffer.goods).map((good) =>
+                  Array.from(offer.goods).map((good) =>
                     (
                       <li className="property__inside-item" key={good}>
                         {good}
@@ -93,21 +93,21 @@ function Property({offers}:PropertyProps): JSX.Element {
             <div className="property__host">
               <h2 className="property__host-title">Meet the host</h2>
               <div className="property__host-user user">
-                <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                  <img className="property__avatar user__avatar" src={currentOffer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
+                <div className={`property__avatar-wrapper property__avatar-wrapper${offer.host.isPro ? '--pro' : ''} user__avatar-wrapper`}>
+                  <img className="property__avatar user__avatar" src={offer.host.avatarUrl} width="74" height="74" alt="Host avatar" />
                 </div>
                 <span className="property__user-name">
-                    {currentOffer.host.name}
+                  {offer.host.name}
                 </span>
                 <span className="property__user-status">
-                    {
-                      currentOffer.host.isPro && 'Pro'
-                    }
+                  {
+                    offer.host.isPro && 'Pro'
+                  }
                 </span>
               </div>
               <div className="property__description">
                 <p className="property__text">
-                  {currentOffer.description}
+                  {offer.description}
                 </p>
               </div>
             </div>
@@ -192,7 +192,7 @@ function Property({offers}:PropertyProps): JSX.Element {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-              <OffersList offers={otherOffers}/>
+            <OffersList offers={otherOffers}/>
           </div>
         </section>
       </div>
