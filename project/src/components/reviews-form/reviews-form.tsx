@@ -1,18 +1,34 @@
-﻿import {FormEvent, useState} from 'react';
+﻿import {ChangeEvent, FormEvent, useState} from 'react';
 import {Reviews} from '../../types/review';
 
 function ReviewsForm() : JSX.Element {
   const [reviews, setReview] = useState<Reviews>([]);
 
+  const onChangeHandler = (e : ChangeEvent<HTMLInputElement>) => {
+    const {name, value } = e.target;
+    setReview({...reviews, [name]:value});
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post"
-      onSubmit={(e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+      onSubmit={(event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        let data = {};
+        const form = (event.target as HTMLFormElement);
+        Array.from(form.elements).forEach((element) => {
+          const nameAttribute = element.getAttribute('name');
+          const valueAttribute = element.getAttribute('value');
+
+          if(nameAttribute !== null)
+          {
+            data = {...data, [nameAttribute]:valueAttribute};
+          }
+        });
       }}
     >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
+        <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onChange={onChangeHandler} />
         <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
           <svg className="form__star-image" width="37" height="33">
             <use xlinkHref="#icon-star"></use>
