@@ -12,6 +12,10 @@ type PropertyProps = {
   offers : Offers;
 }
 
+function capitalizeFirstLetter(source: string): string {
+  return source.charAt(0).toUpperCase() + source.slice(1);
+}
+
 function Property({offers}:PropertyProps): JSX.Element {
   const params = useParams();
   const offerId = params.id;
@@ -64,7 +68,7 @@ function Property({offers}:PropertyProps): JSX.Element {
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                {offer.type}
+                {capitalizeFirstLetter(offer.type)}
               </li>
               <li className="property__feature property__feature--bedrooms">
                 {offer.bedrooms} Bedrooms
