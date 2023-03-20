@@ -3,7 +3,7 @@ import {Offer} from '../types/offer';
 export const offers: Offer[] = [
   {
     city: {
-      name: 'Cologne',
+      name: 'Amsterdam',
       location: {
         latitude: 52.3909553943508,
         longitude: 4.85309666406198,
@@ -56,7 +56,7 @@ export const offers: Offer[] = [
   },
   {
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
         latitude: 52.3609553943508,
         longitude: 4.85309666406198,
@@ -111,7 +111,7 @@ export const offers: Offer[] = [
   },
   {
     city: {
-      name: 'Hamburg',
+      name: 'Amsterdam',
       location: {
         latitude: 52.3909553943508,
         longitude: 4.929309666406198,
