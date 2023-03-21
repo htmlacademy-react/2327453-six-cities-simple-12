@@ -1,5 +1,5 @@
 ﻿import {City} from "../../types/city";
-import {Point, Points} from "../../types/location";
+import {Points} from "../../types/location";
 import {Icon, Marker} from "leaflet";
 import {useEffect, useRef} from "react";
 import useMap from "../../hooks/useMap";
@@ -7,7 +7,7 @@ import useMap from "../../hooks/useMap";
 type MapProps = {
   city: City;
   points: Points;
-  selectedPoint: Point | undefined;
+  selectedPointId: number | undefined;
 }
 
 const defaultIcon = new Icon({
@@ -23,7 +23,7 @@ const currentIcon = new Icon({
 })
 
 function Map(props: MapProps): JSX.Element {
-  const {city, points, selectedPoint} = props;
+  const {city, points, selectedPointId} = props;
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -38,14 +38,14 @@ function Map(props: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            selectedPoint !== undefined && point.id === selectedPoint.id
+            selectedPointId !== undefined && point.id === selectedPointId
             ? currentIcon
             : defaultIcon
           )
           .addTo(map);
       });
     }
-  }, [map, points, selectedPoint]);
+  }, [map, points, selectedPointId]);
 
   return <div ref={mapRef}></div>
 }
