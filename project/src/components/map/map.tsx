@@ -3,21 +3,22 @@ import {Points} from "../../types/location";
 import {Icon, Marker} from "leaflet";
 import {useEffect, useRef} from "react";
 import useMap from "../../hooks/useMap";
+import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from "../../const";
 
 type MapProps = {
   city: City;
   points: Points;
-  selectedPointId: number | undefined;
+  selectedPointId: number | null;
 }
 
 const defaultIcon = new Icon({
-  iconPath: '../../public/img/pin.svg',
+  iconPath: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 })
 
 const currentIcon = new Icon({
-  iconPath: '../../public/img/pin-active.svg',
+  iconPath: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
 })
@@ -38,7 +39,7 @@ function Map(props: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            selectedPointId !== undefined && point.id === selectedPointId
+            selectedPointId !== null && point.id === selectedPointId
             ? currentIcon
             : defaultIcon
           )
