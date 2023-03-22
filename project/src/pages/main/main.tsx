@@ -10,10 +10,8 @@ type MainProps = {
 
 function Main({ offers } : MainProps) : JSX.Element
 {
-  const points: Point[] = [];
-  offers.forEach((o) => {
-    points.push({...o.location, id : o.id});
-  });
+  const points = offers.map<Point>((o) => ({...o.location, id : o.id}));
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
