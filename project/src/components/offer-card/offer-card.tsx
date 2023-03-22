@@ -3,11 +3,12 @@ import {Link} from 'react-router-dom';
 
 type OfferCardProps = {
   offer : Offer;
+  onMouseEnter(): void;
 }
 
-function OfferCard({ offer }:OfferCardProps): JSX.Element {
+function OfferCard({ offer, onMouseEnter }:OfferCardProps): JSX.Element {
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseEnter={onMouseEnter}>
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

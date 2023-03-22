@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
@@ -10,6 +10,8 @@ type MainProps = {
 
 function Main({ offers } : MainProps) : JSX.Element
 {
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
   const points = offers.map<Point>((o) => ({...o.location, id : o.id}));
 
   return (
@@ -72,12 +74,12 @@ function Main({ offers } : MainProps) : JSX.Element
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <OffersList offers={offers}/>
+              <OffersList offers={offers} onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}/>
             </div>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map city={offers[0].city} points={points} selectedPointId={null}></Map>
+              <Map city={offers[0].city} points={points} selectedPointId={hoveredCardId}></Map>
             </section>
           </div>
         </div>
