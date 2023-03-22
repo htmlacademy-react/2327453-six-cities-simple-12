@@ -1,9 +1,9 @@
-﻿import {City} from "../../types/city";
-import {Points} from "../../types/location";
-import {Icon, Marker} from "leaflet";
-import {useEffect, useRef} from "react";
-import useMap from "../../hooks/useMap";
-import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from "../../const";
+import {City} from '../../types/city';
+import {Points} from '../../types/location';
+import {Icon, Marker} from 'leaflet';
+import {useEffect, useRef} from 'react';
+import useMap from '../../hooks/useMap';
+import {URL_MARKER_CURRENT, URL_MARKER_DEFAULT} from '../../const';
 
 type MapProps = {
   city: City;
@@ -15,13 +15,13 @@ const defaultIcon = new Icon({
   iconPath: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
-})
+});
 
 const currentIcon = new Icon({
   iconPath: URL_MARKER_CURRENT,
   iconSize: [40, 40],
   iconAnchor: [20, 40]
-})
+});
 
 function Map(props: MapProps): JSX.Element {
   const {city, points, selectedPointId} = props;
@@ -40,15 +40,15 @@ function Map(props: MapProps): JSX.Element {
         marker
           .setIcon(
             selectedPointId !== null && point.id === selectedPointId
-            ? currentIcon
-            : defaultIcon
+              ? currentIcon
+              : defaultIcon
           )
           .addTo(map);
       });
     }
   }, [map, points, selectedPointId]);
 
-  return <div ref={mapRef}></div>
+  return <div ref={mapRef}></div>;
 }
 
 export default Map;

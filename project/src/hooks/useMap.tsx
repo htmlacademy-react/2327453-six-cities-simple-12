@@ -1,6 +1,6 @@
-﻿import {Map, TileLayer} from 'leaflet';
-import {MutableRefObject, useEffect, useRef, useState} from "react";
-import {City} from "../types/city";
+import {Map, TileLayer} from 'leaflet';
+import {MutableRefObject, useEffect, useRef, useState} from 'react';
+import {City} from '../types/city';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,

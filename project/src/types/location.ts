@@ -5,7 +5,7 @@ export type Location = {
 };
 
 export type Point = {
-  id: number
+  id: number;
 } & Location
 
 export type Points = Point[];
