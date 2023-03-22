@@ -1,6 +1,8 @@
 import React from 'react';
 import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
+import {Point} from '../../types/location';
+import Map from '../../components/map/map';
 
 type MainProps = {
   offers : Offers;
@@ -8,6 +10,10 @@ type MainProps = {
 
 function Main({ offers } : MainProps) : JSX.Element
 {
+  const points: Point[] = [];
+  offers.forEach((o) => {
+    points.push({...o.location, id : o.id});
+  });
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -72,7 +78,9 @@ function Main({ offers } : MainProps) : JSX.Element
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map">
+              <Map city={offers[0].city} points={points} selectedPointId={null}></Map>
+            </section>
           </div>
         </div>
       </div>
