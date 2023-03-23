@@ -78,9 +78,7 @@ function Main({ offers } : MainProps) : JSX.Element
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map">
-              <Map city={offers[0].city} points={points} selectedPointId={hoveredCardId}></Map>
-            </section>
+            <Map city={offers[0].city} points={points} selectedPointId={hoveredCardId}></Map>
           </div>
         </div>
       </div>
