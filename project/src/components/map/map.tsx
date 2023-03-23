@@ -3,6 +3,7 @@ import {Points} from '../../types/location';
 import {Icon, Marker} from 'leaflet';
 import {useEffect, useRef} from 'react';
 import useMap from '../../hooks/useMap';
+import 'leaflet/dist/leaflet.css';
 
 type MapProps = {
   city: City;
