@@ -31,9 +31,7 @@ function Map(props: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
-      const markers:Marker[] = [];
-
-      points.forEach((point) => {
+      const markers = points.map<Marker>((point) => {
         const marker = new Marker({
           lat: point.latitude,
           lng: point.longitude
@@ -47,7 +45,7 @@ function Map(props: MapProps): JSX.Element {
           )
           .addTo(map);
 
-        markers.push(marker);
+        return marker;
       });
 
       return () => {
