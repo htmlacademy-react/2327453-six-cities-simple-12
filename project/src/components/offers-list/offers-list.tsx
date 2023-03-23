@@ -10,7 +10,7 @@ function OffersList({offers, onMouseEnter}:OffersListProps): JSX.Element {
   return (
     <>
       {
-        Array.from(offers).map((offer) => <OfferCard offer={offer} key={offer.id} onMouseEnter={() => onMouseEnter(offer.id)}/>)
+        offers.map((offer) => <OfferCard offer={offer} key={offer.id} onMouseEnter={() => onMouseEnter(offer.id)}/>)
       }
     </>
   );
