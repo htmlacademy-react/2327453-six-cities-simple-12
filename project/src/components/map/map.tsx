@@ -31,6 +31,8 @@ function Map(props: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      const markers:Marker[] = [];
+
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.latitude,
@@ -44,7 +46,13 @@ function Map(props: MapProps): JSX.Element {
               : defaultIcon
           )
           .addTo(map);
+
+        markers.push(marker);
       });
+
+      return () => {
+        markers.forEach((m) => map.removeLayer(m));
+      };
     }
   }, [map, points, selectedPointId]);
 
