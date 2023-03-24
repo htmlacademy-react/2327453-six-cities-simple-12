@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import NotFound from '../not-found/not-found';
 import OffersList from '../../components/offers-list/offers-list';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
+import '../../extensions/string-extensions';
 
 const PropertySettings = {
   maxImages : 6,
@@ -10,10 +11,6 @@ const PropertySettings = {
 
 type PropertyProps = {
   offers : Offers;
-}
-
-function capitalizeFirstLetter(source: string): string {
-  return source.charAt(0).toUpperCase() + source.slice(1);
 }
 
 function Property({offers}:PropertyProps): JSX.Element {
@@ -68,7 +65,7 @@ function Property({offers}:PropertyProps): JSX.Element {
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                {capitalizeFirstLetter(offer.type)}
+                {offer.type.capitalizeFirstLetter()}
               </li>
               <li className="property__feature property__feature--bedrooms">
                 {offer.bedrooms} Bedrooms
