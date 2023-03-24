@@ -12,7 +12,7 @@ function Main({ offers } : MainProps) : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
-  const points = offers.map<Point>((o) => ({...o.location, id : o.id}));
+  const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
 
   return (
     <main className="page__main page__main--index">
@@ -78,7 +78,7 @@ function Main({ offers } : MainProps) : JSX.Element
             </div>
           </section>
           <div className="cities__right-section">
-            <Map city={offers[0].city} points={points} selectedPointId={hoveredCardId}></Map>
+            <Map city={offers[0].city} points={points} selectedPointId={hoveredCardId} className={'cities__map'}></Map>
           </div>
         </div>
       </div>
