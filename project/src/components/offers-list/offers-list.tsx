@@ -11,13 +11,14 @@ function OffersList({offers, onMouseEnter, onMouseLeave}:OffersListProps): JSX.E
   return (
     <>
       {
-        offers.map((offer) =>
-          (<OfferCard
+        offers.map((offer) => (
+          <OfferCard
             offer={offer}
             key={offer.id}
             onMouseEnter={() => onMouseEnter(offer.id)}
             onMouseLeave={() => onMouseLeave()}
-          />))
+          />
+        ))
       }
     </>
   );
