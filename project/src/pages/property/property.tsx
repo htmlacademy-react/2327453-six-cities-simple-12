@@ -4,6 +4,7 @@ import NotFound from '../not-found/not-found';
 import OffersList from '../../components/offers-list/offers-list';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
 import '../../extensions/string-extensions';
+import '../../extensions/number-extensions';
 import Map from '../../components/map/map';
 import React, {useState} from 'react';
 import {Point} from '../../types/location';
