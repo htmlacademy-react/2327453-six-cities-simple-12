@@ -21,6 +21,8 @@ function Property({offers}:PropertyProps): JSX.Element {
   const offerId = params.id;
   const offer = offers.find((o) => o.id.toString() === offerId);
 
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
   if (offer === undefined)
   {
     return <NotFound />;
@@ -29,8 +31,6 @@ function Property({offers}:PropertyProps): JSX.Element {
   const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
 
   const rating = offer.rating * 100 / 5;
-
-  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
   const points = otherOffers.map<Point>((o) => ({...o.location, id:o.id}));
 
@@ -158,7 +158,7 @@ function Property({offers}:PropertyProps): JSX.Element {
           <div className="near-places__list places__list">
             <OffersList
               offers={otherOffers}
-              onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}
+              onMouseEnter={(offerIdParam: number) => setHoveredCardId(offerIdParam)}
               onMouseLeave={() => setHoveredCardId(null)}
             />
           </div>
