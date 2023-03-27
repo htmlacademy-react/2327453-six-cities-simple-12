@@ -16,7 +16,7 @@ function OfferCard({ offer, onMouseEnter }:OfferCardProps): JSX.Element {
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer/${offer.id}`}>
+        <Link to={generatePath(AppRoute.Property, {id : `${offer.id}`})}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
