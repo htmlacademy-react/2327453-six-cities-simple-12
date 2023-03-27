@@ -1,6 +1,7 @@
 import {Offer} from '../../types/offer';
 import {generatePath, Link} from 'react-router-dom';
 import '../../extensions/string-extensions';
+import '../../extensions/number-extensions';
 import {AppRoute} from '../../const';
 
 type OfferCardProps = {
@@ -10,6 +11,7 @@ type OfferCardProps = {
 }
 
 function OfferCard({ offer, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
+  const rating = offer.rating.getPercents();
   return (
     <article className="cities__card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {offer.isPremium &&
@@ -31,7 +33,7 @@ function OfferCard({ offer, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.El
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: '80%'}}></span>
+            <span style={{width: `${rating}%`}}></span>
             <span className="visually-hidden">{offer.rating}</span>
           </div>
         </div>
