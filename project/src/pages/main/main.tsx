@@ -74,7 +74,11 @@ function Main({ offers } : MainProps) : JSX.Element
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <OffersList offers={offers} onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}/>
+              <OffersList
+                offers={offers}
+                onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}
+                onMouseLeave={() => setHoveredCardId(null)}
+              />
             </div>
           </section>
           <div className="cities__right-section">

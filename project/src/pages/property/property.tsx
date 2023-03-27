@@ -149,7 +149,11 @@ function Property({offers}:PropertyProps): JSX.Element {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            <OffersList offers={otherOffers} onMouseEnter={(offerIdParam: number) => ({})}/>
+            <OffersList
+              offers={otherOffers}
+              onMouseEnter={(offerIdParam: number) => ({})}
+              onMouseLeave={() => ({})}
+            />
           </div>
         </section>
       </div>
