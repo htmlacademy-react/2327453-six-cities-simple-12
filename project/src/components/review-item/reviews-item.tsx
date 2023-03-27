@@ -1,5 +1,6 @@
-﻿import {Review} from "../../types/review";
-import React from "react";
+﻿import {Review} from '../../types/review';
+import React from 'react';
+import '../../extensions/number-extensions';
 
 function ReviewsItem(review: Review) : JSX.Element {
   const rating = review.rating.getPercents();
