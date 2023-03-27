@@ -4,6 +4,9 @@ import NotFound from '../not-found/not-found';
 import OffersList from '../../components/offers-list/offers-list';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
 import '../../extensions/string-extensions';
+import Map from '../../components/map/map';
+import React, {useState} from 'react';
+import {Point} from '../../types/location';
 
 const PropertySettings = {
   maxImages : 6,
@@ -26,6 +29,10 @@ function Property({offers}:PropertyProps): JSX.Element {
   const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
 
   const rating = offer.rating * 100 / 5;
+
+  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
+  const points = otherOffers.map<Point>((o) => ({...o.location, id:o.id}));
 
   return (
     <main className="page__main page__main--property">
@@ -143,7 +150,7 @@ function Property({offers}:PropertyProps): JSX.Element {
             </section>
           </div>
         </div>
-        <section className="property__map map"></section>
+        <Map city={otherOffers[0].city} points={points} selectedPointId={hoveredCardId} className={'property__map'}></Map>
       </section>
       <div className="container">
         <section className="near-places places">
@@ -151,8 +158,8 @@ function Property({offers}:PropertyProps): JSX.Element {
           <div className="near-places__list places__list">
             <OffersList
               offers={otherOffers}
-              onMouseEnter={(offerIdParam: number) => ({})}
-              onMouseLeave={() => ({})}
+              onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}
+              onMouseLeave={() => setHoveredCardId(null)}
             />
           </div>
         </section>
