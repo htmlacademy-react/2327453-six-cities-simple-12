@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 function NotFound(): JSX.Element {
   return (
@@ -8,7 +9,7 @@ function NotFound(): JSX.Element {
           <div className="property__wrapper">
             <div className="property__name-wrapper">
               <h2>404 Not Found</h2>
-              <Link to='/'>Go to main page</Link>
+              <Link to={AppRoute.Main}>Go to main page</Link>
             </div>
           </div>
         </div>
