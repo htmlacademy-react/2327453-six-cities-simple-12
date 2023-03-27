@@ -30,7 +30,7 @@ function Property({offers}:PropertyProps): JSX.Element {
 
   const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
 
-  const rating = offer.rating * 100 / 5;
+  const rating = Math.round(offer.rating) * 20;
 
   const points = otherOffers.map<Point>((o) => ({...o.location, id:o.id}));
 
