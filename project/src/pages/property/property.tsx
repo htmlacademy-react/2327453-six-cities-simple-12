@@ -8,6 +8,8 @@ import '../../extensions/number-extensions';
 import Map from '../../components/map/map';
 import React, {useState} from 'react';
 import {Point} from '../../types/location';
+import {Reviews} from '../../types/review';
+import ReviewsItem from '../../components/review-item/reviews-item';
 
 const PropertySettings = {
   maxImages : 6,
@@ -15,9 +17,10 @@ const PropertySettings = {
 
 type PropertyProps = {
   offers : Offers;
+  reviews : Reviews;
 }
 
-function Property({offers}:PropertyProps): JSX.Element {
+function Property({offers, reviews}:PropertyProps): JSX.Element {
   const params = useParams();
   const offerId = params.id;
   const offer = offers.find((o) => o.id.toString() === offerId);
@@ -124,6 +127,14 @@ function Property({offers}:PropertyProps): JSX.Element {
             <section className="property__reviews reviews">
               <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
               <ul className="reviews__list">
+                {
+                  reviews.map((review) => (
+                    <ReviewsItem
+                      review={review}
+                      key={review.id}
+                    />
+                  ))
+                }
                 <li className="reviews__item">
                   <div className="reviews__user user">
                     <div className="reviews__avatar-wrapper user__avatar-wrapper">
