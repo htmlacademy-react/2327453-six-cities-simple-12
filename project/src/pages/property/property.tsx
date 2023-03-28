@@ -1,7 +1,6 @@
 import {Offers} from '../../types/offer';
 import {useParams} from 'react-router-dom';
 import NotFound from '../not-found/not-found';
-import OffersList from '../../components/offers-list/offers-list';
 import '../../types/string-extensions';
 import '../../types/number-extensions';
 import Map from '../../components/map/map';
@@ -9,6 +8,7 @@ import React, {useState} from 'react';
 import {Point} from '../../types/location';
 import {Reviews} from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
+import NearPlacesList from '../../components/near-places-list/near-places-list';
 
 const PropertySettings = {
   maxImages : 6,
@@ -129,16 +129,9 @@ function Property({offers, reviews}:PropertyProps): JSX.Element {
         <Map city={otherOffers[0].city} points={points} selectedPointId={hoveredCardId} className={'property__map'}></Map>
       </section>
       <div className="container">
-        <section className="near-places places">
-          <h2 className="near-places__title">Other places in the neighbourhood</h2>
-          <div className="near-places__list places__list">
-            <OffersList
-              offers={otherOffers}
-              onMouseEnter={(offerIdParam: number) => setHoveredCardId(offerIdParam)}
-              onMouseLeave={() => setHoveredCardId(null)}
-            />
-          </div>
-        </section>
+        <NearPlacesList offers={otherOffers} onMouseEnter={(offerIdParam: number) => setHoveredCardId(offerIdParam)}
+          onMouseLeave={() => setHoveredCardId(null)}
+        />
       </div>
     </main>
   );
