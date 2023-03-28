@@ -129,10 +129,11 @@ function Property({offers, reviews}:PropertyProps): JSX.Element {
               <ul className="reviews__list">
                 {
                   reviews.map((review) => (
-                    <ReviewsItem
-                      review={review}
-                      key={review.id}
-                    />
+                    <li className="reviews__item" key={review.id}>
+                      <ReviewsItem
+                        review={review}
+                      />
+                    </li>
                   ))
                 }
                 <li className="reviews__item">
