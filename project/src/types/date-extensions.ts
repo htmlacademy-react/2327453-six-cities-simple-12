@@ -1,4 +1,4 @@
-﻿import moment from 'moment';
+import moment from 'moment';
 
 declare global {
   interface Date {
@@ -10,5 +10,4 @@ Date.prototype.format = function (format: string): string {
   return moment(this).format(format);
 };
 
-export {};
 

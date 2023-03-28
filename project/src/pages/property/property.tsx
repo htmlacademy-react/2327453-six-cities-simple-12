@@ -8,7 +8,7 @@ import Map from '../../components/map/map';
 import React, {useState} from 'react';
 import {Point} from '../../types/location';
 import {Reviews} from '../../types/review';
-import ReviewsList from "../../components/reviews-list/reviews-list";
+import ReviewsList from '../../components/reviews-list/reviews-list';
 
 const PropertySettings = {
   maxImages : 6,

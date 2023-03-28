@@ -1,4 +1,4 @@
-﻿import {Reviews} from '../../types/review';
+import {Reviews} from '../../types/review';
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
 
@@ -27,7 +27,7 @@ function ReviewsList({reviews}: ReviewsListProps): JSX.Element {
             </div>
             <span className="reviews__user-name">
                         Max
-                    </span>
+            </span>
           </div>
           <div className="reviews__info">
             <div className="reviews__rating rating">
