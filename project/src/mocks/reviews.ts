@@ -1,4 +1,4 @@
-﻿import {Reviews} from '../types/review';
+import {Reviews} from '../types/review';
 
 export const reviews: Reviews = [
   {
@@ -13,4 +13,4 @@ export const reviews: Reviews = [
     comment: 'Bathed in the nature. Completely unplugged. Unforgettable.',
     date: new Date()
   }
-]
+];
