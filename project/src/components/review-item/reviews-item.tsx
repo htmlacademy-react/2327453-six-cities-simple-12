@@ -1,6 +1,6 @@
 import {Review} from '../../types/review';
 import React from 'react';
-import '../../extensions/number-extensions';
+import '../../types/number-extensions';
 
 type ReviewsItemProps = {
   review: Review;
