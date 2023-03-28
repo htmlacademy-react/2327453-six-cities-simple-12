@@ -1,6 +1,7 @@
 import {Review} from '../../types/review';
 import React from 'react';
 import '../../types/number-extensions';
+import moment from 'moment';
 
 type ReviewsItemProps = {
   review: Review;
@@ -29,7 +30,7 @@ function ReviewsItem({review}: ReviewsItemProps) : JSX.Element {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime={review.date.toDateString()}>{review.date.toDateString()}</time>
+        <time className="reviews__time" dateTime={moment(review.date).format('YYYY-MM-DD')}>{moment(review.date).format('MMMM YYYY')}</time>
       </div>
     </>
   );
