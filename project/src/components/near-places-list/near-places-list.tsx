@@ -1,4 +1,4 @@
-﻿import OffersList from '../offers-list/offers-list';
+import OffersList from '../offers-list/offers-list';
 import React from 'react';
 import {Offers} from '../../types/offer';
 
