@@ -1,6 +1,6 @@
 ﻿import {offers} from "../mocks/offers";
 import {createReducer} from "@reduxjs/toolkit";
-import {changeCity} from "./action";
+import {changeCity, getOffers} from "./action";
 
 const initialState = {
   cityName: 'Amsterdam',
@@ -8,7 +8,12 @@ const initialState = {
 }
 
 const reducer = createReducer(initialState, (builder) => {
-  builder.addCase(changeCity, (state) => {
-    state.cityName = 'Undefinedam';
-  });
+  builder
+    .addCase(changeCity, (state) => {
+    state.cityName = 'Amsterdam';
+  })
+    .addCase(getOffers, (state) => {
+    state.offers = offers;
+  })
+  ;
 });
