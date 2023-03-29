@@ -15,6 +15,7 @@ function NearPlacesList({offers, onMouseEnter, onMouseLeave}: NearPlacesListProp
       <div className="near-places__list places__list">
         <OffersList
           offers={offers}
+          classNamePrefix={'near-places'}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         />

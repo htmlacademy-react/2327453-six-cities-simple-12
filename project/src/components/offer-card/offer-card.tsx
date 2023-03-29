@@ -6,19 +6,20 @@ import {AppRoute} from '../../const';
 
 type OfferCardProps = {
   offer : Offer;
+  classNamePrefix : string;
   onMouseEnter(): void;
   onMouseLeave(): void;
 }
 
-function OfferCard({ offer, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
+function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
   const rating = offer.rating.getPercents();
   return (
-    <article className="cities__card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className={`${classNamePrefix}__card place-card`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div>}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
         <Link to={generatePath(AppRoute.Property, {id : `${offer.id}`})}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
