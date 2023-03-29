@@ -1,6 +1,6 @@
-import OffersList from '../offers-list/offers-list';
 import React from 'react';
 import {Offers} from '../../types/offer';
+import OfferCard from '../offer-card/offer-card';
 
 type NearPlacesListProps = {
   offers: Offers;
@@ -13,12 +13,17 @@ function NearPlacesList({offers, onMouseEnter, onMouseLeave}: NearPlacesListProp
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        <OffersList
-          offers={offers}
-          classNamePrefix={'near-places'}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-        />
+        {
+          offers.map((offer) => (
+            <OfferCard
+              key={offer.id}
+              offer={offer}
+              classNamePrefix={'near-places'}
+              onMouseEnter={() => onMouseEnter(offer.id)}
+              onMouseLeave={() => onMouseLeave()}
+            />
+          ))
+        }
       </div>
     </section>
   );
