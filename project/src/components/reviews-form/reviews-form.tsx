@@ -1,7 +1,7 @@
 import {ChangeEvent, FormEvent} from 'react';
-import {Review} from "../../types/review";
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {setReview} from "../../store/action";
+import {Review} from '../../types/review';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setReview} from '../../store/action';
 
 function ReviewsForm() : JSX.Element {
   const review = useAppSelector((state) => state.review);
@@ -10,7 +10,7 @@ function ReviewsForm() : JSX.Element {
   function setNewReview(name:string, value:string) {
     const newReview = {...review, [name]:value} as Review;
     dispatch(setReview(newReview));
-  };
+  }
 
   const onInputChangeHandler = ({target} : ChangeEvent<HTMLInputElement>) => {
     const {name, value} = target;

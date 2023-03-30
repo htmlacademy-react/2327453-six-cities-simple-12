@@ -2,7 +2,7 @@ import {offers} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {changeCity, getOffers, setHoveredCardId, setReview} from './action';
 import {Offers} from '../types/offer';
-import {Review} from "../types/review";
+import {Review} from '../types/review';
 
 type state = {
   cityName: string;
@@ -33,8 +33,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setReview, (state, action) => {
       const review = action.payload;
       state.review = review;
-    })
-  ;
+    });
 });
 
 export {reducer};
