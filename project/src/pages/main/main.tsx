@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {setHoveredCardId} from '../../store/action';
 
 type MainProps = {
   offers : Offers;
@@ -10,7 +12,8 @@ type MainProps = {
 
 function Main({ offers } : MainProps) : JSX.Element
 {
-  const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+  const hoveredCardId = useAppSelector((state) => state.hoveredCardId);
+  const dispatch = useAppDispatch();
 
   const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
 
@@ -77,8 +80,8 @@ function Main({ offers } : MainProps) : JSX.Element
               <OffersList
                 offers={offers}
                 classNamePrefix={'cities'}
-                onMouseEnter={(offerId: number) => setHoveredCardId(offerId)}
-                onMouseLeave={() => setHoveredCardId(null)}
+                onMouseEnter={(offerId: number) => dispatch(setHoveredCardId(offerId))}
+                onMouseLeave={() => dispatch(setHoveredCardId(null))}
               />
             </div>
           </section>
