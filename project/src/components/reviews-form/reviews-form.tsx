@@ -1,16 +1,25 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, FormEvent} from 'react';
+import {Review} from "../../types/review";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {setReview} from "../../store/action";
 
 function ReviewsForm() : JSX.Element {
-  const [review, setReview] = useState({});
+  const review = useAppSelector((state) => state.review);
+  const dispatch = useAppDispatch();
+
+  function setNewReview(name:string, value:string) {
+    const newReview = {...review, [name]:value} as Review;
+    dispatch(setReview(newReview));
+  };
 
   const onInputChangeHandler = ({target} : ChangeEvent<HTMLInputElement>) => {
-    const {name, value } = target;
-    setReview({...review, [name]:value});
+    const {name, value} = target;
+    setNewReview(name, value);
   };
 
   const onTextAreaChangeHandler = ({target} : ChangeEvent<HTMLTextAreaElement>) => {
     const {name, value } = target;
-    setReview({...review, [name]:value});
+    setNewReview(name, value);
   };
 
   return (
