@@ -1,7 +1,6 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from '../../hooks';
+import {useAppSelector} from '../../hooks';
 import {Link} from 'react-router-dom';
-import {changeCity, getOffers} from '../../store/action';
 
 type CitiesListProps = {
   citiesNames: string[];
@@ -10,7 +9,6 @@ type CitiesListProps = {
 function CitiesList(props: CitiesListProps): JSX.Element {
   const {citiesNames} = props;
 
-  const dispatch = useAppDispatch();
   const currentCity = useAppSelector((state) => state.cityName);
 
   const tabsClassName = 'locations__item-link tabs__item ';
@@ -29,11 +27,7 @@ function CitiesList(props: CitiesListProps): JSX.Element {
 
             return (
               <li className="locations__item" key={city}>
-                <Link className={className} to={`/${city}`} onClick={() => {
-                  dispatch(changeCity(city));
-                  dispatch(getOffers());
-                }}
-                >
+                <Link className={className} to={`/${city}`}>
                   <span>{city}</span>
                 </Link>
               </li>

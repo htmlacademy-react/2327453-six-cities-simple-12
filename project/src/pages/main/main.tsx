@@ -5,11 +5,22 @@ import Map from '../../components/map/map';
 import {useAppSelector} from '../../hooks';
 import {AppRoute, Cities} from '../../const';
 import CitiesList from '../../components/cities-list/cities-list';
-import {Navigate} from 'react-router-dom';
+import {Navigate, useParams} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {changeCity, getOffers} from '../../store/action';
 
 function Main() : JSX.Element
 {
+  const dispatch = useDispatch();
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
+  const params = useParams();
+  const city = params.city;
+
+  if (city !== undefined) {
+    dispatch(changeCity(city));
+    dispatch(getOffers());
+  }
 
   const offers = useAppSelector((state) => state.offers);
 
