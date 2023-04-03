@@ -3,14 +3,18 @@ import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
+import {useAppSelector} from "../../hooks";
 
 type MainProps = {
   offers : Offers;
 }
 
-function Main({ offers } : MainProps) : JSX.Element
+function Main(props: MainProps) : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+
+  const city = useAppSelector((state) => state.cityName);
+  const offers = useAppSelector((state) => state.offers);
 
   const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
 
