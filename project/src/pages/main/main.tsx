@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
@@ -7,15 +6,10 @@ import {useAppSelector} from '../../hooks';
 import {Cities} from '../../const';
 import CitiesList from '../../components/cities-list/cities-list';
 
-type MainProps = {
-  offers : Offers;
-}
-
-function Main(props: MainProps) : JSX.Element
+function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
-  const city = useAppSelector((state) => state.cityName);
   const offers = useAppSelector((state) => state.offers);
 
   const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
