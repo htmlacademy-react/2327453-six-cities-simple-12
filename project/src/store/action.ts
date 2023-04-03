@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {Review} from '../types/review';
+import {Review} from "../types/review";
 
 export const changeCity = createAction('changeCity');
 export const getOffers = createAction('getOffers');
