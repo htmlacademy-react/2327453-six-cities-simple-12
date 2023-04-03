@@ -3,9 +3,9 @@ import {Offers} from '../../types/offer';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
-import {useAppSelector} from "../../hooks";
-import {Cities} from "../../const";
-import CitiesList from "../../components/cities-list/cities-list";
+import {useAppSelector} from '../../hooks';
+import {Cities} from '../../const';
+import CitiesList from '../../components/cities-list/cities-list';
 
 type MainProps = {
   offers : Offers;

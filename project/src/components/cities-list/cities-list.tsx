@@ -1,6 +1,6 @@
-﻿import React from "react";
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../../hooks";
+import React from 'react';
+import {useDispatch} from 'react-redux';
+import {useAppSelector} from '../../hooks';
 
 type CitiesListProps = {
   citiesNames: string[];
@@ -11,7 +11,7 @@ function CitiesList(props: CitiesListProps): JSX.Element {
 
   const currentCity = useAppSelector((state) => state.cityName);
 
-  const tabsClassName = `locations__item-link tabs__item `;
+  const tabsClassName = 'locations__item-link tabs__item ';
   const activeTabClassName = 'tabs__item--active';
 
   return (
@@ -23,7 +23,7 @@ function CitiesList(props: CitiesListProps): JSX.Element {
             let className = tabsClassName;
 
             if(currentCity === city)
-              className += activeTabClassName;
+            {className += activeTabClassName;}
 
             return (
               <li className="locations__item" key={city}>
