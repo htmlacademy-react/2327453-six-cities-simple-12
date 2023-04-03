@@ -32,7 +32,8 @@ function CitiesList(props: CitiesListProps): JSX.Element {
                 <Link className={className} to={`/${city}`} onClick={() => {
                   dispatch(changeCity(city));
                   dispatch(getOffers());
-                }}>
+                }}
+                >
                   <span>{city}</span>
                 </Link>
               </li>
