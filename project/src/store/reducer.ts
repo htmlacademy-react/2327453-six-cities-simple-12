@@ -1,18 +1,10 @@
 import {offers} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getOffers, setHoveredCardId} from './action';
-import {Offers} from '../types/offer';
+import {changeCity, getOffers} from './action';
 
-type state = {
-  cityName: string;
-  offers: Offers;
-  hoveredCardId: number | null;
-}
-
-const initialState : state = {
+const initialState = {
   cityName: 'Amsterdam',
-  offers: offers,
-  hoveredCardId: null,
+  offers: offers
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -22,10 +14,6 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(getOffers, (state) => {
       state.offers = offers;
-    })
-    .addCase(setHoveredCardId, (state, action) => {
-      const hoveredCardId = action.payload;
-      state.hoveredCardId = hoveredCardId;
     });
 });
 
