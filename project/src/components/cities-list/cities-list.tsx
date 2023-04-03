@@ -68,3 +68,5 @@ function CitiesList(props: CitiesListProps): JSX.Element {
     </section>
   );
 }
+
+export default CitiesList;
