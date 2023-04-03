@@ -1,9 +1,14 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute, Cities} from '../../const';
+import CitiesList from '../../components/cities-list/cities-list';
+import React from 'react';
 
 function NotFound(): JSX.Element {
   return (
     <main className="page__main page__main--property">
+      <div className="tabs">
+        <CitiesList citiesNames={Cities} />
+      </div>
       <section className="property">
         <div className="property__container container">
           <div className="property__wrapper">

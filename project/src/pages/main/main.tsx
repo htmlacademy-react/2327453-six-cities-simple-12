@@ -3,14 +3,20 @@ import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
 import {useAppSelector} from '../../hooks';
-import {Cities} from '../../const';
+import {AppRoute, Cities} from '../../const';
 import CitiesList from '../../components/cities-list/cities-list';
+import {Navigate} from 'react-router-dom';
 
 function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
   const offers = useAppSelector((state) => state.offers);
+
+  if (offers.length === 0)
+  {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
 
   const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
 
