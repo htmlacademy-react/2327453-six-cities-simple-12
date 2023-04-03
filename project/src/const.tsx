@@ -4,3 +4,5 @@ export enum AppRoute {
   Property = '/offer/:id',
   NotFound = '*',
 }
+
+export const Cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
