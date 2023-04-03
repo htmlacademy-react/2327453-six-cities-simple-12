@@ -9,7 +9,6 @@ type CitiesListProps = {
 function CitiesList(props: CitiesListProps): JSX.Element {
   const {citiesNames} = props;
 
-  const dispatch = useDispatch();
   const currentCity = useAppSelector((state) => state.cityName);
 
   const tabsClassName = `locations__item-link tabs__item `;
