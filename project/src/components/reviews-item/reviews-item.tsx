@@ -2,13 +2,14 @@ import {Review} from '../../types/review';
 import React from 'react';
 import '../../types/number-extensions';
 import '../../types/date-extensions';
+import {getPercents} from "../../types/number-extensions";
 
 type ReviewsItemProps = {
   review: Review;
 }
 
 function ReviewsItem({review}: ReviewsItemProps) : JSX.Element {
-  const rating = review.rating.getPercents();
+  const rating = getPercents(review.rating);
 
   return (
     <>

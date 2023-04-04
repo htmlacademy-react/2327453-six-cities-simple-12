@@ -10,6 +10,7 @@ import {Reviews} from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import {capitalizeFirstLetter} from "../../types/string-extensions";
+import {getPercents} from "../../types/number-extensions";
 
 const PropertySettings = {
   maxImages : 6,
@@ -34,7 +35,7 @@ function Property({offers, reviews}:PropertyProps): JSX.Element {
 
   const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
 
-  const rating = offer.rating.getPercents();
+  const rating = getPercents(offer.rating);
 
   const points = otherOffers.map<Point>((o) => ({...o.location, id:o.id}));
 

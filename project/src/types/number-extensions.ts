@@ -1,12 +1,3 @@
-declare global {
-  interface Number {
-    getPercents(): number;
-  }
+export function getPercents(source: number): number {
+  return Math.round(source) * 20;
 }
-
-Number.prototype.getPercents = function (): number {
-  const thisNumber = Number(this);
-  return Math.round(thisNumber) * 20;
-};
-
-export {};

@@ -4,6 +4,7 @@ import '../../types/string-extensions';
 import '../../types/number-extensions';
 import {AppRoute} from '../../const';
 import {capitalizeFirstLetter} from "../../types/string-extensions";
+import {getPercents} from "../../types/number-extensions";
 
 type OfferCardProps = {
   offer : Offer;
@@ -13,7 +14,7 @@ type OfferCardProps = {
 }
 
 function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
-  const rating = offer.rating.getPercents();
+  const rating = getPercents(offer.rating);
   return (
     <article className={`${classNamePrefix}__card place-card`} onMouseEnter={() => onMouseEnter(offer.id)} onMouseLeave={() => onMouseLeave()}>
       {offer.isPremium &&
