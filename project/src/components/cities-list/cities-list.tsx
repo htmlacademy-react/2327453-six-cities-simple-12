@@ -1,8 +1,6 @@
 import React from 'react';
 import {useAppSelector} from '../../hooks';
-import {Link, useParams} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import {changeCity, getOffers} from '../../store/action';
+import {Link} from 'react-router-dom';
 
 type CitiesListProps = {
   citiesNames: string[];
@@ -10,21 +8,11 @@ type CitiesListProps = {
 
 function CitiesList(props: CitiesListProps): JSX.Element {
   const {citiesNames} = props;
-  const dispatch = useDispatch();
+
+  const currentCity = useAppSelector((state) => state.cityName);
 
   const tabsClassName = 'locations__item-link tabs__item ';
   const activeTabClassName = 'tabs__item--active';
-
-  let currentCity = useAppSelector((state) => state.cityName);
-
-  const params = useParams();
-  const cityParam = params.city;
-
-  if (cityParam !== undefined) {
-    currentCity = cityParam;
-    dispatch(changeCity(cityParam));
-    dispatch(getOffers());
-  }
 
   return (
     <section className="locations container">
