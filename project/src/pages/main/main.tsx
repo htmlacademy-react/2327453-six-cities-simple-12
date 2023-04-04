@@ -11,7 +11,9 @@ function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
+  const city = useAppSelector((state) => state.cityName);
   const offers = useAppSelector((state) => state.offers);
+
   const offersCount = offers.length;
 
   if (offersCount === 0)
@@ -31,7 +33,7 @@ function Main() : JSX.Element
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+            <b className="places__found">{offersCount} places to stay in {city}</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
