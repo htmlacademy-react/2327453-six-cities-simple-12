@@ -3,8 +3,8 @@ import {generatePath, Link} from 'react-router-dom';
 import '../../types/string-extensions';
 import '../../types/number-extensions';
 import {AppRoute} from '../../const';
-import {capitalizeFirstLetter} from "../../types/string-extensions";
-import {getPercents} from "../../types/number-extensions";
+import {capitalizeFirstLetter} from '../../types/string-extensions';
+import {getPercents} from '../../types/number-extensions';
 
 type OfferCardProps = {
   offer : Offer;

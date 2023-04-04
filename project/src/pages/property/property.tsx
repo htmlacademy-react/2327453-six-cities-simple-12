@@ -9,8 +9,8 @@ import {Point} from '../../types/location';
 import {Reviews} from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import {capitalizeFirstLetter} from "../../types/string-extensions";
-import {getPercents} from "../../types/number-extensions";
+import {capitalizeFirstLetter} from '../../types/string-extensions';
+import {getPercents} from '../../types/number-extensions';
 
 const PropertySettings = {
   maxImages : 6,

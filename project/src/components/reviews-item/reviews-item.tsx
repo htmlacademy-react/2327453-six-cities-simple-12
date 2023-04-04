@@ -2,8 +2,8 @@ import {Review} from '../../types/review';
 import React from 'react';
 import '../../types/number-extensions';
 import '../../types/date-extensions';
-import {getPercents} from "../../types/number-extensions";
-import {format} from "../../types/date-extensions";
+import {getPercents} from '../../types/number-extensions';
+import {format} from '../../types/date-extensions';
 
 type ReviewsItemProps = {
   review: Review;
