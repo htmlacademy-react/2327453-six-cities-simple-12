@@ -32,6 +32,7 @@ function Map(props: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.flyTo([city.location.latitude,city.location.longitude], city.location.zoom, {duration:0.2});
       const markers = points.map<Marker>((point) => {
         const marker = new Marker({
           lat: point.latitude,
@@ -53,7 +54,7 @@ function Map(props: MapProps): JSX.Element {
         markers.forEach((m) => map.removeLayer(m));
       };
     }
-  }, [map, points, selectedPointId]);
+  }, [map, city, points, selectedPointId]);
 
   return <section className={`${className} map`} ref={mapRef}></section>;
 }
