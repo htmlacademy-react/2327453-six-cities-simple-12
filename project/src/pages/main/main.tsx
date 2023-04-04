@@ -11,9 +11,10 @@ function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
-  const offers = useAppSelector((state) => state.offers.slice(0, 4));
+  const offers = useAppSelector((state) => state.offers);
+  const offersCount = offers.length;
 
-  if (offers.length === 0)
+  if (offersCount === 0)
   {
     return <Navigate to={AppRoute.NotFound} />;
   }
@@ -30,7 +31,7 @@ function Main() : JSX.Element
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">312 places to stay in Amsterdam</b>
+            <b className="places__found">{offersCount} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
