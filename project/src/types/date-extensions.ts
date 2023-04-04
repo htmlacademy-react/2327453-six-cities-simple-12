@@ -1,13 +1,5 @@
 import moment from 'moment';
 
-declare global {
-  interface Date {
-    format(format: string): string;
-  }
+export function format(source:Date, format: string): string {
+  return moment(source).format(format);
 }
-
-Date.prototype.format = function (format: string): string {
-  return moment(this).format(format);
-};
-
-

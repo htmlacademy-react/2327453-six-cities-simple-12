@@ -3,6 +3,7 @@ import React from 'react';
 import '../../types/number-extensions';
 import '../../types/date-extensions';
 import {getPercents} from "../../types/number-extensions";
+import {format} from "../../types/date-extensions";
 
 type ReviewsItemProps = {
   review: Review;
@@ -31,7 +32,7 @@ function ReviewsItem({review}: ReviewsItemProps) : JSX.Element {
         <p className="reviews__text">
           {review.comment}
         </p>
-        <time className="reviews__time" dateTime={review.date.format('YYYY-MM-DD')}>{review.date.format('MMMM YYYY')}</time>
+        <time className="reviews__time" dateTime={format(review.date,'YYYY-MM-DD')}>{format(review.date,'MMMM YYYY')}</time>
       </div>
     </>
   );
