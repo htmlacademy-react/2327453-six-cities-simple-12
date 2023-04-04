@@ -9,6 +9,7 @@ import {Point} from '../../types/location';
 import {Reviews} from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
+import {capitalizeFirstLetter} from "../../types/string-extensions";
 
 const PropertySettings = {
   maxImages : 6,
@@ -75,7 +76,7 @@ function Property({offers, reviews}:PropertyProps): JSX.Element {
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                {offer.type.capitalizeFirstLetter()}
+                {capitalizeFirstLetter(offer.type)}
               </li>
               <li className="property__feature property__feature--bedrooms">
                 {offer.bedrooms} Bedrooms

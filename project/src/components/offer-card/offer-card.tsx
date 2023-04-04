@@ -3,6 +3,7 @@ import {generatePath, Link} from 'react-router-dom';
 import '../../types/string-extensions';
 import '../../types/number-extensions';
 import {AppRoute} from '../../const';
+import {capitalizeFirstLetter} from "../../types/string-extensions";
 
 type OfferCardProps = {
   offer : Offer;
@@ -41,7 +42,7 @@ function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferC
         <h2 className="place-card__name">
           <Link to={generatePath(AppRoute.Property, {id : `${offer.id}`})}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{offer.type.capitalizeFirstLetter()}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>
     </article>
   );

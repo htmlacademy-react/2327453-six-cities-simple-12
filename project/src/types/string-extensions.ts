@@ -1,12 +1,3 @@
-declare global {
-  interface String {
-    capitalizeFirstLetter(): string;
-  }
+export function capitalizeFirstLetter(source: string): string {
+  return source.charAt(0).toUpperCase() + source.slice(1);
 }
-
-String.prototype.capitalizeFirstLetter = function (): string {
-  const thisString = String(this);
-  return thisString.charAt(0).toUpperCase() + thisString.slice(1);
-};
-
-export {};
