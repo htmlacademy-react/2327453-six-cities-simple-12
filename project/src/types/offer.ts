@@ -2,7 +2,7 @@ import {City} from './city';
 import {User} from './user';
 import {Location} from './location';
 
-export type OfferType = 'room' | 'house' | 'apartment';
+export type OfferType = 'room' | 'house' | 'apartment' | 'hotel';
 
 export type Offer = {
   city: City;
