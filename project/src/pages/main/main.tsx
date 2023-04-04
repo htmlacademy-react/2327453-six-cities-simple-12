@@ -11,7 +11,7 @@ function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector((state) => state.offers.slice(0, 4));
 
   if (offers.length === 0)
   {
