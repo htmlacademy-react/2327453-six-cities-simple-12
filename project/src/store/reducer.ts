@@ -2,9 +2,11 @@ import {offers} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {changeCity, getOffers} from './action';
 
+const defaultCity = 'Paris';
+
 const initialState = {
-  cityName: 'Amsterdam',
-  offers: offers
+  cityName: defaultCity,
+  offers: offers.filter((o) => o.city.name === defaultCity)
 };
 
 const reducer = createReducer(initialState, (builder) => {
