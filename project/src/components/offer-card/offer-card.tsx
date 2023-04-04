@@ -7,14 +7,14 @@ import {AppRoute} from '../../const';
 type OfferCardProps = {
   offer : Offer;
   classNamePrefix : string;
-  onMouseEnter(): void;
+  onMouseEnter(offerId: number): void;
   onMouseLeave(): void;
 }
 
 function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
   const rating = offer.rating.getPercents();
   return (
-    <article className={`${classNamePrefix}__card place-card`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className={`${classNamePrefix}__card place-card`} onMouseEnter={() => onMouseEnter(offer.id)} onMouseLeave={() => onMouseLeave()}>
       {offer.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

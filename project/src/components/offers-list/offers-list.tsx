@@ -17,8 +17,8 @@ function OffersList({offers, classNamePrefix, onMouseEnter, onMouseLeave}:Offers
             key={offer.id}
             offer={offer}
             classNamePrefix={classNamePrefix}
-            onMouseEnter={() => onMouseEnter(offer.id)}
-            onMouseLeave={() => onMouseLeave()}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
           />
         ))
       }
