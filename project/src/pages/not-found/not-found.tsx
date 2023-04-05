@@ -6,9 +6,7 @@ import React from 'react';
 function NotFound(): JSX.Element {
   return (
     <main className="page__main page__main--property">
-      <div className="tabs">
-        <CitiesList citiesNames={Cities} />
-      </div>
+      <CitiesList citiesNames={Cities} />
       <section className="property">
         <div className="property__container container">
           <div className="property__wrapper">

@@ -24,31 +24,33 @@ function CitiesList(props: CitiesListProps): JSX.Element {
   const activeTabClassName = 'tabs__item--active';
 
   return (
-    <section className="locations container">
-      <ul className="locations__list tabs__list">
-        {
-          citiesNames.map((city) =>
+    <div className="tabs">
+      <section className="locations container">
+        <ul className="locations__list tabs__list">
           {
-            let className = tabsClassName;
+            citiesNames.map((cityName) =>
+            {
+              let className = tabsClassName;
 
-            if(currentCity === city)
-            {className += activeTabClassName;}
+              if(currentCity === cityName)
+              {className += activeTabClassName;}
 
-            return (
-              <li className="locations__item" key={city}>
-                <Link className={className} to={`/${city}`} onClick={() => {
-                  dispatch(changeCity(city));
-                  dispatch(getOffers());
-                }}
-                >
-                  <span>{city}</span>
-                </Link>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </section>
+              return (
+                <li className="locations__item" key={cityName}>
+                  <Link className={className} to={`/${cityName}`} onClick={() => {
+                    dispatch(changeCity(cityName));
+                    dispatch(getOffers());
+                  }}
+                  >
+                    <span>{cityName}</span>
+                  </Link>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </section>
+    </div>
   );
 }
 
