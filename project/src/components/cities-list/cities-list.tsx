@@ -1,6 +1,6 @@
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {changeCity, getOffers} from '../../store/action';
 
 type CitiesListProps = {
@@ -12,6 +12,13 @@ function CitiesList(props: CitiesListProps): JSX.Element {
 
   const dispatch = useAppDispatch();
   const currentCity = useAppSelector((state) => state.cityName);
+
+  const {city} = useParams();
+
+  if (city !== undefined)
+  {
+    dispatch(changeCity(city));
+  }
 
   const tabsClassName = 'locations__item-link tabs__item ';
   const activeTabClassName = 'tabs__item--active';
