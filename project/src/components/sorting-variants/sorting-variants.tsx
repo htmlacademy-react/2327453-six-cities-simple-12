@@ -1,7 +1,10 @@
 import React from 'react';
+import {useAppSelector} from "../../hooks";
 
 
 function SortingVariants(): JSX.Element {
+  const sorting = useAppSelector((state) => state.sorting);
+
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>

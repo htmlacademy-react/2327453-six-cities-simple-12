@@ -1,12 +1,14 @@
 import {offers} from '../mocks/offers';
 import {createReducer} from '@reduxjs/toolkit';
 import {changeCity, getOffers} from './action';
+import {Sorting} from "../types/sorting";
 
 const defaultCity = 'Paris';
 
 const initialState = {
   cityName: defaultCity,
-  offers: offers.filter((o) => o.city.name === defaultCity)
+  offers: offers.filter((o) => o.city.name === defaultCity),
+  sorting: Sorting.popular
 };
 
 const reducer = createReducer(initialState, (builder) => {
