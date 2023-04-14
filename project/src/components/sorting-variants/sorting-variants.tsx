@@ -1,9 +1,23 @@
 import React from 'react';
-import {useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {Sorting} from '../../types/sorting';
+import {sortOffers} from '../../store/action';
 
 
 function SortingVariants(): JSX.Element {
-  const sorting = useAppSelector((state) => state.sorting);
+  const dispatch = useAppDispatch();
+
+  const currentSorting = useAppSelector((state) => state.sorting);
+
+  function setClassName(sorting:string): string {
+    let classname = 'places__option';
+
+    if (sorting === currentSorting){
+      classname += ' places__option--active';
+    }
+
+    return classname;
+  }
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -15,10 +29,10 @@ function SortingVariants(): JSX.Element {
         </svg>
       </span>
       <ul className="places__options places__options--custom places__options--opened">
-        <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-        <li className="places__option" tabIndex={0}>Price: low to high</li>
-        <li className="places__option" tabIndex={0}>Price: high to low</li>
-        <li className="places__option" tabIndex={0}>Top rated first</li>
+        <li className={setClassName(Sorting.popular)} tabIndex={0} onClick={() => dispatch(sortOffers(Sorting.popular))}>Popular</li>
+        <li className={setClassName(Sorting.priceLowToHigh)} tabIndex={0} onClick={() => dispatch(sortOffers(Sorting.priceLowToHigh))}>Price: low to high</li>
+        <li className={setClassName(Sorting.priceHighToLow)} tabIndex={0} onClick={() => dispatch(sortOffers(Sorting.priceHighToLow))}>Price: high to low</li>
+        <li className={setClassName(Sorting.topRatedFirst)} tabIndex={0} onClick={() => dispatch(sortOffers(Sorting.topRatedFirst))}>Top rated first</li>
       </ul>
     </form>
   );
