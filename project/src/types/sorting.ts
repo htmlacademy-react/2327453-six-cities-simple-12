@@ -5,7 +5,7 @@ export const Sorting = {
   topRatedFirst: 'topRatedFirst'
 } as const;
 
-export const SortingDictionary = {
+export const SortingDictionary: { [key: string]: string } = {
   [Sorting.popular]: 'Popular',
   [Sorting.priceLowToHigh]: 'Price: low to high',
   [Sorting.priceHighToLow]: 'Price: high to low',
