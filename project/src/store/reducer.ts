@@ -18,36 +18,38 @@ const initialState: state = {
   sorting: Sorting.popular
 };
 
-function getFilteredOffersByCurrentCity(): Offers {
-  return offers.filter((o) => o.city.name === initialState.cityName);
+function getFilteredOffersByCity(cityName: string): Offers {
+  return offers.filter((o) => o.city.name === cityName);
+}
+
+function sortOffersBySortingTypeOrDefault(sorting: string, currentOffers: Offers, cityName: string) {
+  switch(sorting)
+  {
+    case Sorting.priceLowToHigh:
+      return currentOffers.sort((a,b) => a.price - b.price);
+    case Sorting.priceHighToLow:
+      return currentOffers.sort((a,b) => b.price - a.price);
+    case Sorting.topRatedFirst:
+      return currentOffers.sort((a,b) => b.rating - a.rating);
+    default:
+      return getFilteredOffersByCity(cityName);
+  }
 }
 
 const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeCity, (state, action) => {
       state.cityName = action.payload;
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName);
     })
     .addCase(getOffers, (state) => {
-      state.offers = getFilteredOffersByCurrentCity();
+      state.offers = getFilteredOffersByCity(state.cityName);
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName);
     })
     .addCase(sortOffers, (state, action) => {
       state.sorting = action.payload;
 
-      switch(state.sorting)
-      {
-        case Sorting.priceLowToHigh:
-          state.offers = state.offers.sort((a,b) => a.price - b.price);
-          break;
-        case Sorting.priceHighToLow:
-          state.offers = state.offers.sort((a,b) => b.price - a.price);
-          break;
-        case Sorting.topRatedFirst:
-          state.offers = state.offers.sort((a,b) => b.rating - a.rating);
-          break;
-        default:
-          state.offers = getFilteredOffersByCurrentCity();
-          break;
-      }
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName);
     });
 });
 
