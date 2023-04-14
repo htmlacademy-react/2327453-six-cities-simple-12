@@ -1,4 +1,3 @@
-import {Offers} from '../../types/offer';
 import {useParams} from 'react-router-dom';
 import NotFound from '../not-found/not-found';
 import '../../types/string-extensions';
@@ -11,19 +10,22 @@ import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import {capitalizeFirstLetter} from '../../types/string-extensions';
 import {getPercents} from '../../types/number-extensions';
+import {useAppSelector} from '../../hooks';
 
 const PropertySettings = {
   maxImages : 6,
+  maxOtherOffers : 3,
 } as const;
 
 type PropertyProps = {
-  offers : Offers;
   reviews : Reviews;
 }
 
-function Property({offers, reviews}:PropertyProps): JSX.Element {
+function Property({reviews}:PropertyProps): JSX.Element {
   const params = useParams();
   const offerId = params.id;
+
+  const offers = useAppSelector((state) => state.offers);
   const offer = offers.find((o) => o.id.toString() === offerId);
 
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
@@ -33,7 +35,7 @@ function Property({offers, reviews}:PropertyProps): JSX.Element {
     return <NotFound />;
   }
 
-  const otherOffers = offers.filter((o) => o.id.toString() !== offerId);
+  const otherOffers = offers.filter((o) => o.id.toString() !== offerId).slice(0, PropertySettings.maxOtherOffers);
 
   const rating = getPercents(offer.rating);
 
