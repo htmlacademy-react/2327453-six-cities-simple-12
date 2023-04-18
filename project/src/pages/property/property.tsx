@@ -5,7 +5,6 @@ import '../../types/number-extensions';
 import Map from '../../components/map/map';
 import React, {useState} from 'react';
 import {Point} from '../../types/location';
-import {Reviews} from '../../types/review';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import {capitalizeFirstLetter} from '../../types/string-extensions';
@@ -17,11 +16,7 @@ const PropertySettings = {
   maxOtherOffers : 3,
 } as const;
 
-type PropertyProps = {
-  reviews : Reviews;
-}
-
-function Property({reviews}:PropertyProps): JSX.Element {
+function Property(): JSX.Element {
   const params = useParams();
   const offerId = params.id;
 
@@ -127,7 +122,7 @@ function Property({reviews}:PropertyProps): JSX.Element {
                 </p>
               </div>
             </div>
-            <ReviewsList reviews={reviews} />
+            <ReviewsList offerId={offerId} />
           </div>
         </div>
         <Map city={otherOffers[0].city} points={points} selectedPointId={hoveredCardId} className={'property__map'}></Map>

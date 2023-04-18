@@ -1,12 +1,19 @@
-import {Reviews} from '../../types/review';
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
+import {store} from '../../store';
+import {loadReviews} from '../../store/api-actions';
+import {useAppSelector} from '../../hooks';
 
 type ReviewsListProps = {
-  reviews : Reviews;
+  offerId : string | undefined;
 }
 
-function ReviewsList({reviews}: ReviewsListProps): JSX.Element {
+function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
+  if(offerId) {
+    store.dispatch(loadReviews(offerId));
+  }
+
+  const reviews = useAppSelector((state) => state.reviews);
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>

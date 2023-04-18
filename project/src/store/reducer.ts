@@ -1,19 +1,22 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getOffers, sortOffers} from './action';
+import {changeCity, getOffers, getReviews, sortOffers} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
+import {Reviews} from '../types/review';
 
 const defaultCity = 'Paris';
 
 type state = {
   cityName: string;
   offers: Offers;
+  reviews: Reviews;
   sorting: string;
 }
 
 const initialState: state = {
   cityName: defaultCity,
   offers: [],
+  reviews: [],
   sorting: Sorting.popular
 };
 
@@ -45,6 +48,9 @@ const reducer = createReducer(initialState, (builder) => {
       state.offers = action.payload;
       state.offers = getFilteredOffersByCity(state.cityName, state.offers);
       state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, state.offers);
+    })
+    .addCase(getReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(sortOffers, (state, action) => {
       state.sorting = action.payload;

@@ -10,5 +10,5 @@ export const Cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', '
 
 export enum APIRoute {
   Offers = '/hotels',
-  Reviews = '/comments/'
+  Reviews = '/comments'
 }

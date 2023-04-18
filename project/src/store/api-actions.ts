@@ -1,10 +1,10 @@
-﻿import {createAsyncThunk} from "@reduxjs/toolkit";
-import {AppDispatch, State} from "../types/state";
-import {AxiosInstance} from "axios";
-import {getOffers, getReviews} from "./action";
-import {Offers} from "../types/offer";
-import {APIRoute} from "../const";
-import {Reviews} from "../types/review";
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {AppDispatch, State} from '../types/state';
+import {AxiosInstance} from 'axios';
+import {getOffers, getReviews} from './action';
+import {Offers} from '../types/offer';
+import {APIRoute} from '../const';
+import {Reviews} from '../types/review';
 
 export const loadOffers = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -18,14 +18,14 @@ export const loadOffers = createAsyncThunk<void, undefined, {
   },
 );
 
-export const loadReviews = createAsyncThunk<void, undefined, {
+export const loadReviews = createAsyncThunk<void, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'data/fetchReviews',
-  async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.get<Reviews>(APIRoute.Reviews);
+  async (offerId, {dispatch, extra: api}) => {
+    const {data} = await api.get<Reviews>(`${APIRoute.Reviews}/offerId`);
     dispatch(getReviews(data));
   },
 );
