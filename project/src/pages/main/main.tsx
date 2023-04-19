@@ -3,10 +3,10 @@ import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
 import {useAppSelector} from '../../hooks';
-import {AppRoute, Cities} from '../../const';
+import {Cities} from '../../const';
 import CitiesList from '../../components/cities-list/cities-list';
-import {Navigate} from 'react-router-dom';
 import SortingVariants from '../../components/sorting-variants/sorting-variants';
+import NotFound from '../not-found/not-found';
 
 function Main() : JSX.Element
 {
@@ -19,7 +19,7 @@ function Main() : JSX.Element
 
   if (offersCount === 0)
   {
-    return <Navigate to={AppRoute.NotFound} />;
+    return <NotFound />;
   }
 
   const points = offers.map<Point>((o) => ({...o.location, id:o.id}));
