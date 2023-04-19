@@ -21,22 +21,23 @@ const initialState: state = {
 };
 
 let loadedOffers:Offers = [];
+let filteredOffers:Offers = [];
 
-function getFilteredOffersByCity(cityName: string, offers: Offers): Offers {
-  return offers.filter((o) => o.city.name === cityName);
+function getFilteredOffers(cityName: string): Offers {
+  return loadedOffers.filter((o) => o.city.name === cityName);
 }
 
-function sortOffersBySortingTypeOrDefault(sorting: string, currentOffers: Offers, cityName: string, offers: Offers) {
+function getSortedOffers(sorting: string) {
   switch(sorting)
   {
     case Sorting.priceLowToHigh:
-      return currentOffers.sort((a,b) => a.price - b.price);
+      return filteredOffers.sort((a,b) => a.price - b.price);
     case Sorting.priceHighToLow:
-      return currentOffers.sort((a,b) => b.price - a.price);
+      return filteredOffers.sort((a,b) => b.price - a.price);
     case Sorting.topRatedFirst:
-      return currentOffers.sort((a,b) => b.rating - a.rating);
+      return filteredOffers.sort((a,b) => b.rating - a.rating);
     default:
-      return getFilteredOffersByCity(cityName, offers);
+      return filteredOffers;
   }
 }
 
@@ -44,15 +45,19 @@ const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeCity, (state, action) => {
       state.cityName = action.payload;
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
+
+      filteredOffers = getFilteredOffers(state.cityName);
+      state.offers = getSortedOffers(state.sorting);
     })
     .addCase(offersLoaded, (state, action) => {
       loadedOffers = action.payload;
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
+
+      filteredOffers = getFilteredOffers(state.cityName);
+      state.offers = getSortedOffers(state.sorting);
     })
     .addCase(getOffers, (state, action) => {
-      state.offers = getFilteredOffersByCity(state.cityName, state.offers);
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
+      filteredOffers = getFilteredOffers(state.cityName);
+      state.offers = getSortedOffers(state.sorting);
     })
     .addCase(getReviews, (state, action) => {
       state.reviews = action.payload;
@@ -60,7 +65,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(sortOffers, (state, action) => {
       state.sorting = action.payload;
 
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
+      state.offers = getSortedOffers(state.sorting);
     });
 });
 
