@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getOffers, getReviews, loadedOffers, sortOffers} from './action';
+import {changeCity, getOffers, getReviews, offersLoaded, sortOffers} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
@@ -19,6 +19,8 @@ const initialState: state = {
   reviews: [],
   sorting: Sorting.popular
 };
+
+let loadedOffers:Offers = [];
 
 function getFilteredOffersByCity(cityName: string, offers: Offers): Offers {
   return offers.filter((o) => o.city.name === cityName);
@@ -42,14 +44,15 @@ const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeCity, (state, action) => {
       state.cityName = action.payload;
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, state.offers);
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
     })
-    .addCase(loadedOffers, (state, action) => {
-      state.offers = action.payload;
+    .addCase(offersLoaded, (state, action) => {
+      loadedOffers = action.payload;
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
     })
     .addCase(getOffers, (state, action) => {
       state.offers = getFilteredOffersByCity(state.cityName, state.offers);
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, state.offers);
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
     })
     .addCase(getReviews, (state, action) => {
       state.reviews = action.payload;
@@ -57,7 +60,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(sortOffers, (state, action) => {
       state.sorting = action.payload;
 
-      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, state.offers);
+      state.offers = sortOffersBySortingTypeOrDefault(state.sorting, state.offers, state.cityName, loadedOffers);
     });
 });
 

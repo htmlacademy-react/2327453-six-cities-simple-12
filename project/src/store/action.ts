@@ -3,7 +3,7 @@ import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
 
 export const changeCity = createAction<string>('changeCity');
-export const loadedOffers = createAction<Offers>('loadedOffers');
+export const offersLoaded = createAction<Offers>('offersLoaded');
 export const getOffers = createAction('getOffers');
 export const sortOffers = createAction<string>('sortOffers');
 export const getReviews = createAction<Reviews>('getReviews');
