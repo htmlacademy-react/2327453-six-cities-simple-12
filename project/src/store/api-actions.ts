@@ -1,10 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state';
 import {AxiosInstance} from 'axios';
-import {getReviews, offersLoaded} from './action';
+import {getReviews, offersLoaded, setError} from './action';
 import {Offers} from '../types/offer';
-import {APIRoute} from '../const';
+import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
+import {store} from "./index";
 
 export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -27,5 +28,15 @@ export const loadReviewsAction = createAsyncThunk<void, string, {
   async (offerId, {dispatch, extra: api}) => {
     const {data} = await api.get<Reviews>(`${APIRoute.Reviews}/offerId`);
     dispatch(getReviews(data));
+  },
+);
+
+export  const clearErrorAction = createAsyncThunk(
+  'clearError',
+  () => {
+    setTimeout(
+      () => store.dispatch(setError(null)),
+      TIMEOUT_SHOW_ERROR,
+    )
   },
 );
