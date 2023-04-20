@@ -12,3 +12,5 @@ export enum APIRoute {
   Offers = '/hotels',
   Reviews = '/comments'
 }
+
+export const TIMEOUT_SHOW_ERROR = 2000;
