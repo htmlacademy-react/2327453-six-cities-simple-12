@@ -4,9 +4,9 @@ import App from './components/app/app';
 import {Provider} from 'react-redux';
 import {store} from './store';
 import {BrowserRouter} from 'react-router-dom';
-import {loadOffers} from './store/api-actions';
+import {loadOffersAction} from './store/api-actions';
 
-store.dispatch(loadOffers());
+store.dispatch(loadOffersAction());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

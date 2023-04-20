@@ -6,7 +6,7 @@ import {Offers} from '../types/offer';
 import {APIRoute} from '../const';
 import {Reviews} from '../types/review';
 
-export const loadOffers = createAsyncThunk<void, undefined, {
+export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -18,7 +18,7 @@ export const loadOffers = createAsyncThunk<void, undefined, {
   },
 );
 
-export const loadReviews = createAsyncThunk<void, string, {
+export const loadReviewsAction = createAsyncThunk<void, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
