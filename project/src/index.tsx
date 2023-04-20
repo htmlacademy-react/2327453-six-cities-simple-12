@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import {store} from './store';
 import {BrowserRouter} from 'react-router-dom';
 import {loadOffersAction} from './store/api-actions';
+import ErrorMessage from "./components/error-message/error-message";
 
 store.dispatch(loadOffersAction());
 
@@ -16,6 +17,7 @@ root.render(
   <React.StrictMode>
     <Provider store = {store}>
       <BrowserRouter>
+        <ErrorMessage />
         <App />
       </BrowserRouter>
     </Provider>
