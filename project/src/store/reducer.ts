@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getReviews, offersLoaded, sortOffers} from './action';
+import {changeCity, getReviews, offersLoaded, setError, sortOffers} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
@@ -11,13 +11,15 @@ type state = {
   offers: Offers;
   reviews: Reviews;
   sorting: string;
+  error: string | null;
 }
 
 const initialState: state = {
   cityName: defaultCity,
   offers: [],
   reviews: [],
-  sorting: Sorting.popular
+  sorting: Sorting.popular,
+  error: null,
 };
 
 let loadedOffers:Offers = [];
@@ -62,6 +64,9 @@ const reducer = createReducer(initialState, (builder) => {
       state.sorting = action.payload;
 
       state.offers = getSortedOffers(state.sorting);
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     });
 });
 
