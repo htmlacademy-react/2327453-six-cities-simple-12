@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getOffers, getReviews, offersLoaded, sortOffers} from './action';
+import {changeCity, getReviews, offersLoaded, sortOffers} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
@@ -52,10 +52,6 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(offersLoaded, (state, action) => {
       loadedOffers = action.payload;
 
-      filteredOffers = getFilteredOffers(state.cityName);
-      state.offers = getSortedOffers(state.sorting);
-    })
-    .addCase(getOffers, (state, action) => {
       filteredOffers = getFilteredOffers(state.cityName);
       state.offers = getSortedOffers(state.sorting);
     })

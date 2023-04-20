@@ -1,7 +1,7 @@
 import React from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {Link} from 'react-router-dom';
-import {changeCity, getOffers} from '../../store/action';
+import {changeCity} from '../../store/action';
 
 type CitiesListProps = {
   citiesNames: string[];
@@ -32,7 +32,6 @@ function CitiesList(props: CitiesListProps): JSX.Element {
                 <li className="locations__item" key={cityName}>
                   <Link className={className} to={`/${cityName}`} onClick={() => {
                     dispatch(changeCity(cityName));
-                    dispatch(getOffers());
                   }}
                   >
                     <span>{cityName}</span>
