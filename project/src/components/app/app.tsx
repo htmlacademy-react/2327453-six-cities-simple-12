@@ -5,8 +5,8 @@ import Property from '../../pages/property/property';
 import NotFound from '../../pages/not-found/not-found';
 import {AppRoute} from '../../const';
 import {useScrollToTop} from '../../hooks/use-scroll-to-top';
-import {useAppSelector} from "../../hooks";
-import LoadingScreen from "../../pages/loading-screen/loading-screen";
+import {useAppSelector} from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 function App(): JSX.Element {
   useScrollToTop();
@@ -14,7 +14,7 @@ function App(): JSX.Element {
   const isOffersLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
 
   if (isOffersLoadingInProgress) {
-    return <LoadingScreen />
+    return <LoadingScreen />;
   }
 
   return (

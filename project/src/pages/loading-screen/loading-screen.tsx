@@ -1,4 +1,4 @@
-﻿function LoadingScreen(): JSX.Element {
+function LoadingScreen(): JSX.Element {
   return (
     <p>Loading...</p>
   );
