@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, getReviews, offersLoaded, setError, setOffersLoadingStatus, sortOffers} from './action';
+import {changeCity, reviewsLoaded, offersLoaded, setError, setLoadingStatus, sortOffers} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
@@ -59,7 +59,7 @@ const reducer = createReducer(initialState, (builder) => {
       filteredOffers = getFilteredOffers(state.cityName);
       state.offers = getSortedOffers(state.sorting);
     })
-    .addCase(getReviews, (state, action) => {
+    .addCase(reviewsLoaded, (state, action) => {
       state.reviews = action.payload;
     })
     .addCase(sortOffers, (state, action) => {
@@ -70,7 +70,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setError, (state, action) => {
       state.error = action.payload;
     })
-    .addCase(setOffersLoadingStatus, (state, action) => {
+    .addCase(setLoadingStatus, (state, action) => {
       state.isOffersLoadingInProgress = action.payload;
     });
 });
