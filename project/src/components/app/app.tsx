@@ -11,9 +11,9 @@ import LoadingScreen from '../../pages/loading-screen/loading-screen';
 function App(): JSX.Element {
   useScrollToTop();
 
-  const isOffersLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
+  const isLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
 
-  if (isOffersLoadingInProgress) {
+  if (isLoadingInProgress) {
     return <LoadingScreen />;
   }
 
