@@ -12,14 +12,14 @@ type ReviewsListProps = {
 function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
   const reviews = useAppSelector((state) => state.reviews);
 
-  if(offerId && ! reviews.length) {
-    store.dispatch(loadReviewsAction(offerId));
-  }
-
   const isLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
 
   if (isLoadingInProgress) {
     return <LoadingScreen />;
+  }
+
+  if(offerId && ! reviews.length) {
+    store.dispatch(loadReviewsAction(offerId));
   }
 
   return (
