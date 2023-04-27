@@ -1,12 +1,10 @@
 import {Link} from 'react-router-dom';
-import {AppRoute, Cities} from '../../const';
-import CitiesList from '../../components/cities-list/cities-list';
+import {AppRoute} from '../../const';
 import React from 'react';
 
 function NotFound(): JSX.Element {
   return (
     <main className="page__main page__main--property">
-      <CitiesList citiesNames={Cities} />
       <section className="property">
         <div className="property__container container">
           <div className="property__wrapper">
