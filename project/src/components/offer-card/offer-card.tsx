@@ -5,6 +5,7 @@ import '../../types/number-extensions';
 import {AppRoute} from '../../const';
 import {capitalizeFirstLetter} from '../../types/string-extensions';
 import {getPercents} from '../../types/number-extensions';
+import {useAppSelector} from '../../hooks';
 
 type OfferCardProps = {
   offer : Offer;
@@ -13,8 +14,14 @@ type OfferCardProps = {
   onMouseLeave(): void;
 }
 
+function generatePathToProperty(offerId: number, cityName: string): string {
+  return generatePath(AppRoute.Property, {id : offerId.toString(), city: cityName});
+}
+
 function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferCardProps): JSX.Element {
+  const cityName = useAppSelector((state) => state.cityName);
   const rating = getPercents(offer.rating);
+
   return (
     <article className={`${classNamePrefix}__card place-card`} onMouseEnter={() => onMouseEnter(offer.id)} onMouseLeave={() => onMouseLeave()}>
       {offer.isPremium &&
@@ -22,7 +29,7 @@ function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferC
           <span>Premium</span>
         </div>}
       <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
-        <Link to={generatePath(AppRoute.Property, {id : `${offer.id}`})}>
+        <Link to={generatePathToProperty(offer.id, cityName)}>
           <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image"/>
         </Link>
       </div>
@@ -41,7 +48,7 @@ function OfferCard({ offer, classNamePrefix, onMouseEnter, onMouseLeave }:OfferC
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={generatePath(AppRoute.Property, {id : `${offer.id}`})}>{offer.title}</Link>
+          <Link to={generatePathToProperty(offer.id, cityName)}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{capitalizeFirstLetter(offer.type)}</p>
       </div>

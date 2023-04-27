@@ -1,7 +1,7 @@
 export enum AppRoute {
   Main = '/',
   Login = '/login',
-  Property = '/offer/:id',
+  Property = '/:city/offers/:id',
   City = '/:city',
   NotFound = '*',
 }
