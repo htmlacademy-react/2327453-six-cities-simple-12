@@ -3,13 +3,15 @@ import NotFound from '../not-found/not-found';
 import '../../types/string-extensions';
 import '../../types/number-extensions';
 import Map from '../../components/map/map';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Point} from '../../types/location';
 import ReviewsList from '../../components/reviews-list/reviews-list';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import {capitalizeFirstLetter} from '../../types/string-extensions';
 import {getPercents} from '../../types/number-extensions';
 import {useAppSelector} from '../../hooks';
+import {store} from '../../store';
+import {changeCity} from '../../store/action';
 
 const PropertySettings = {
   maxImages : 6,
@@ -17,8 +19,15 @@ const PropertySettings = {
 } as const;
 
 function Property(): JSX.Element {
-  const params = useParams();
-  const offerId = params.id;
+  const {city, id} = useParams();
+
+  useEffect(() => {
+    if (city) {
+      store.dispatch(changeCity(city));
+    }
+  }, [city]);
+
+  const offerId = id;
 
   const offers = useAppSelector((state) => state.offers);
   const offer = offers.find((o) => o.id.toString() === offerId);
