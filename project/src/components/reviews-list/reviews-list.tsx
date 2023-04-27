@@ -3,17 +3,25 @@ import ReviewsForm from '../../components/reviews-form/reviews-form';
 import {store} from '../../store';
 import {loadReviewsAction} from '../../store/api-actions';
 import {useAppSelector} from '../../hooks';
+import LoadingScreen from '../../pages/loading-screen/loading-screen';
 
 type ReviewsListProps = {
   offerId : string | undefined;
 }
 
 function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
-  if(offerId) {
+  const reviews = useAppSelector((state) => state.reviews);
+
+  if(offerId && ! reviews.length) {
     store.dispatch(loadReviewsAction(offerId));
   }
 
-  const reviews = useAppSelector((state) => state.reviews);
+  const isLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
+
+  if (isLoadingInProgress) {
+    return <LoadingScreen />;
+  }
+
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
