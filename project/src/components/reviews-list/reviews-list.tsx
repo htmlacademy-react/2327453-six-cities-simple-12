@@ -1,7 +1,7 @@
 import ReviewsItem from '../../components/reviews-item/reviews-item';
 import ReviewsForm from '../../components/reviews-form/reviews-form';
 import {store} from '../../store';
-import {loadReviews} from '../../store/api-actions';
+import {loadReviewsAction} from '../../store/api-actions';
 import {useAppSelector} from '../../hooks';
 
 type ReviewsListProps = {
@@ -10,7 +10,7 @@ type ReviewsListProps = {
 
 function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
   if(offerId) {
-    store.dispatch(loadReviews(offerId));
+    store.dispatch(loadReviewsAction(offerId));
   }
 
   const reviews = useAppSelector((state) => state.reviews);

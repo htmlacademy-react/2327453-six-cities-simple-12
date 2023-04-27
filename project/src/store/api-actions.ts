@@ -5,7 +5,7 @@ import {getReviews, offersLoaded, setError} from './action';
 import {Offers} from '../types/offer';
 import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
-import {store} from "./index";
+import {store} from './index';
 
 export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -31,12 +31,12 @@ export const loadReviewsAction = createAsyncThunk<void, string, {
   },
 );
 
-export  const clearErrorAction = createAsyncThunk(
+export const clearErrorAction = createAsyncThunk(
   'clearError',
   () => {
     setTimeout(
       () => store.dispatch(setError(null)),
       TIMEOUT_SHOW_ERROR,
-    )
+    );
   },
 );

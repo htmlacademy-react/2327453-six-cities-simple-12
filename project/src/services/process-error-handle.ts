@@ -1,4 +1,4 @@
-﻿import {store} from '../store';
+import {store} from '../store';
 import {setError} from '../store/action';
 import {clearErrorAction} from '../store/api-actions';
 
