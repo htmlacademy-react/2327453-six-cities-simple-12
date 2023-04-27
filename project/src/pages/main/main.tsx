@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import OffersList from '../../components/offers-list/offers-list';
 import {Point} from '../../types/location';
 import Map from '../../components/map/map';
@@ -7,12 +7,21 @@ import {Cities} from '../../const';
 import CitiesList from '../../components/cities-list/cities-list';
 import SortingVariants from '../../components/sorting-variants/sorting-variants';
 import NotFound from '../not-found/not-found';
+import {useParams} from 'react-router-dom';
+import {store} from '../../store';
+import {changeCity} from '../../store/action';
 
 function Main() : JSX.Element
 {
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
 
-  const city = useAppSelector((state) => state.cityName);
+  const {city} = useParams();
+  useEffect(() => {
+    if (city) {
+      store.dispatch(changeCity(city));
+    }
+  }, [city]);
+
   const offers = useAppSelector((state) => state.offers);
 
   const offersCount = offers.length;
