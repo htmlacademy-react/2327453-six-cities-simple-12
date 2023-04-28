@@ -14,7 +14,7 @@ function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
   const reviews = useAppSelector((state) => state.reviews);
 
   useEffect(() => {
-    if(offerId && ! reviews.length) {
+    if(offerId) {
       store.dispatch(loadReviewsAction(offerId));
     }
   }, [offerId]);
