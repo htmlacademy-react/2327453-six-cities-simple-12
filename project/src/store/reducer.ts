@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {changeCity, reviewsLoaded, offersLoaded, setError, setLoadingStatus, sortOffers} from './action';
+import {changeCity, reviewsLoaded, offersLoaded, setError, setOffersLoadingStatus, sortOffers, setReviewsLoadingStatus} from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
@@ -13,6 +13,7 @@ type state = {
   sorting: string;
   error: string | null;
   isOffersLoadingInProgress: boolean;
+  isReviewsLoadingInProgress: boolean;
 }
 
 const initialState: state = {
@@ -22,6 +23,7 @@ const initialState: state = {
   sorting: Sorting.popular,
   error: null,
   isOffersLoadingInProgress: false,
+  isReviewsLoadingInProgress: false,
 };
 
 let loadedOffers:Offers = [];
@@ -70,8 +72,11 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setError, (state, action) => {
       state.error = action.payload;
     })
-    .addCase(setLoadingStatus, (state, action) => {
+    .addCase(setOffersLoadingStatus, (state, action) => {
       state.isOffersLoadingInProgress = action.payload;
+    })
+    .addCase(setReviewsLoadingStatus, (state, action) => {
+      state.isReviewsLoadingInProgress = action.payload;
     });
 });
 
