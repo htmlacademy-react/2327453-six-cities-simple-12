@@ -22,7 +22,7 @@ function Main() : JSX.Element
     }
   }, [city]);
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector((state) => state.sortedOffers);
 
   const offersCount = offers.length;
 

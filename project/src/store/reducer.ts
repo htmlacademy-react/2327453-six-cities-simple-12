@@ -8,7 +8,9 @@ const defaultCity = 'Paris';
 
 type state = {
   cityName: string;
-  offers: Offers;
+  loadedOffers: Offers;
+  filteredOffers: Offers;
+  sortedOffers: Offers;
   reviews: Reviews;
   sorting: string;
   error: string | null;
@@ -18,7 +20,9 @@ type state = {
 
 const initialState: state = {
   cityName: defaultCity,
-  offers: [],
+  loadedOffers: [],
+  filteredOffers: [],
+  sortedOffers: [],
   reviews: [],
   sorting: Sorting.popular,
   error: null,
@@ -26,14 +30,11 @@ const initialState: state = {
   isReviewsLoadingInProgress: false,
 };
 
-let loadedOffers:Offers = [];
-let filteredOffers:Offers = [];
-
-function getFilteredOffers(cityName: string): Offers {
+function getFilteredOffers(loadedOffers: Offers, cityName: string): Offers {
   return loadedOffers.filter((o) => o.city.name === cityName);
 }
 
-function getSortedOffers(sorting: string) {
+function getSortedOffers(filteredOffers: Offers, sorting: string) {
   switch(sorting)
   {
     case Sorting.priceLowToHigh:
@@ -52,14 +53,14 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(changeCity, (state, action) => {
       state.cityName = action.payload;
 
-      filteredOffers = getFilteredOffers(state.cityName);
-      state.offers = getSortedOffers(state.sorting);
+      state.filteredOffers = getFilteredOffers(state.loadedOffers, state.cityName);
+      state.sortedOffers = getSortedOffers(state.filteredOffers, state.sorting);
     })
     .addCase(offersLoaded, (state, action) => {
-      loadedOffers = action.payload;
+      state.loadedOffers = action.payload;
 
-      filteredOffers = getFilteredOffers(state.cityName);
-      state.offers = getSortedOffers(state.sorting);
+      state.filteredOffers = getFilteredOffers(state.loadedOffers, state.cityName);
+      state.sortedOffers = getSortedOffers(state.filteredOffers, state.sorting);
     })
     .addCase(reviewsLoaded, (state, action) => {
       state.reviews = action.payload;
@@ -67,7 +68,7 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(sortOffers, (state, action) => {
       state.sorting = action.payload;
 
-      state.offers = getSortedOffers(state.sorting);
+      state.sortedOffers = getSortedOffers(state.filteredOffers, state.sorting);
     })
     .addCase(setError, (state, action) => {
       state.error = action.payload;

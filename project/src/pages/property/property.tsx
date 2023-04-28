@@ -29,7 +29,7 @@ function Property(): JSX.Element {
 
   const offerId = id;
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector((state) => state.sortedOffers);
   const offer = offers.find((o) => o.id.toString() === offerId);
 
   const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
