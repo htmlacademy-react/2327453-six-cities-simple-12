@@ -7,7 +7,7 @@ import {
   setOffersLoadingStatus,
   sortOffers,
   setReviewsLoadingStatus,
-  setAuthorizationStatus
+  setAuthorizationStatus, setUser
 } from './action';
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
@@ -95,6 +95,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthorizationStatus, (state, action) => {
       state.isReviewsLoadingInProgress = action.payload;
+    })
+    .addCase(setUser, (state, action) => {
+      state.user = action.payload;
     });
 });
 

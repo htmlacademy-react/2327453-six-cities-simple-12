@@ -8,14 +8,14 @@ import {
   setOffersLoadingStatus,
   setError,
   setReviewsLoadingStatus,
-  setAuthorizationStatus
+  setAuthorizationStatus, setUser
 } from './action';
 import {Offers} from '../types/offer';
 import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
 import {store} from './index';
 import {User} from '../types/user';
-import {Credentials} from "../types/credentials";
+import {Credentials} from '../types/credentials';
 
 export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -45,7 +45,7 @@ export const loadReviewsAction = createAsyncThunk<void, string, {
   },
 );
 
-export const getLogin = createAsyncThunk<User, undefined, {
+export const getLogin = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -54,11 +54,11 @@ export const getLogin = createAsyncThunk<User, undefined, {
   async (_arg, { dispatch, extra: api }) => {
     const { data} = await api.get<User>(APIRoute.Login);
     dispatch(setAuthorizationStatus(true));
-    return data;
+    dispatch(setUser(data));
   },
 );
 
-export const authenticate = createAsyncThunk<User, Credentials, {
+export const authenticate = createAsyncThunk<void, Credentials, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -67,7 +67,7 @@ export const authenticate = createAsyncThunk<User, Credentials, {
   async ({email, password}, {dispatch, extra: api}) => {
     const {data} = await api.post<User>(APIRoute.Login, {email, password});
     dispatch(setAuthorizationStatus(true));
-    return data;
+    dispatch(setUser(data));
   },
 );
 
