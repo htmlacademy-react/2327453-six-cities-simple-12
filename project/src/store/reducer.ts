@@ -12,6 +12,7 @@ import {
 import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
+import {User} from '../types/user';
 
 const defaultCity = 'Paris';
 
@@ -26,6 +27,7 @@ type state = {
   isOffersLoadingInProgress: boolean;
   isReviewsLoadingInProgress: boolean;
   authorizationStatus: boolean;
+  user: User | null;
 }
 
 const initialState: state = {
@@ -39,6 +41,7 @@ const initialState: state = {
   isOffersLoadingInProgress: false,
   isReviewsLoadingInProgress: false,
   authorizationStatus: false,
+  user: null
 };
 
 function getFilteredOffers(loadedOffers: Offers, cityName: string): Offers {
