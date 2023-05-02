@@ -9,3 +9,4 @@ export const reviewsLoaded = createAction<Reviews>('reviewsLoaded');
 export const setError = createAction<string | null>('setError');
 export const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');
 export const setReviewsLoadingStatus = createAction<boolean>('setReviewsLoadingStatus');
+export const setAuthorizationStatus = createAction<boolean>('setAuthorizationStatus');
