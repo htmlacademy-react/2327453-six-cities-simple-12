@@ -16,6 +16,7 @@ type state = {
   error: string | null;
   isOffersLoadingInProgress: boolean;
   isReviewsLoadingInProgress: boolean;
+  authorizationStatus: boolean;
 }
 
 const initialState: state = {
@@ -28,6 +29,7 @@ const initialState: state = {
   error: null,
   isOffersLoadingInProgress: false,
   isReviewsLoadingInProgress: false,
+  authorizationStatus: false,
 };
 
 function getFilteredOffers(loadedOffers: Offers, cityName: string): Offers {
