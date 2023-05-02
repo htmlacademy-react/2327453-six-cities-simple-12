@@ -4,9 +4,10 @@ import App from './components/app/app';
 import {Provider} from 'react-redux';
 import {store} from './store';
 import {BrowserRouter} from 'react-router-dom';
-import {loadOffersAction} from './store/api-actions';
+import {getLogin, loadOffersAction} from './store/api-actions';
 import ErrorMessage from './components/error-message/error-message';
 
+store.dispatch(getLogin());
 store.dispatch(loadOffersAction());
 
 const root = ReactDOM.createRoot(
