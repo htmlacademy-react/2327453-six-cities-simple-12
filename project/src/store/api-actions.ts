@@ -2,7 +2,14 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state';
 import {AxiosInstance} from 'axios';
-import {reviewsLoaded, offersLoaded, setOffersLoadingStatus, setError, setReviewsLoadingStatus} from './action';
+import {
+  reviewsLoaded,
+  offersLoaded,
+  setOffersLoadingStatus,
+  setError,
+  setReviewsLoadingStatus,
+  setAuthorizationStatus
+} from './action';
 import {Offers} from '../types/offer';
 import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
@@ -43,8 +50,9 @@ export const getLogin = createAsyncThunk<User, undefined, {
   extra: AxiosInstance;
 }>(
   'data/getLogin',
-  async (_arg, { extra: api }) => {
+  async (_arg, { dispatch, extra: api }) => {
     const { data} = await api.get<User>(APIRoute.Login);
+    dispatch(setAuthorizationStatus(true));
     return data;
   },
 );
