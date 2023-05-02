@@ -15,6 +15,7 @@ import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
 import {store} from './index';
 import {User} from '../types/user';
+import {Credentials} from "../types/credentials";
 
 export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -49,9 +50,22 @@ export const getLogin = createAsyncThunk<User, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/getLogin',
+  'user/getLogin',
   async (_arg, { dispatch, extra: api }) => {
     const { data} = await api.get<User>(APIRoute.Login);
+    dispatch(setAuthorizationStatus(true));
+    return data;
+  },
+);
+
+export const authenticate = createAsyncThunk<User, Credentials, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/authenticate',
+  async ({email, password}, {dispatch, extra: api}) => {
+    const {data} = await api.post<User>(APIRoute.Login, {email, password});
     dispatch(setAuthorizationStatus(true));
     return data;
   },
