@@ -7,6 +7,7 @@ import {Offers} from '../types/offer';
 import {APIRoute, TIMEOUT_SHOW_ERROR} from '../const';
 import {Reviews} from '../types/review';
 import {store} from './index';
+import {User} from '../types/user';
 
 export const loadOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -33,6 +34,18 @@ export const loadReviewsAction = createAsyncThunk<void, string, {
     const {data} = await api.get<Reviews>(`${APIRoute.Reviews}/${offerId}`);
     dispatch(setReviewsLoadingStatus(false));
     dispatch(reviewsLoaded(data));
+  },
+);
+
+export const getLogin = createAsyncThunk<User, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/getLogin',
+  async (_arg, { extra: api }) => {
+    const { data} = await api.get<User>(APIRoute.Login);
+    return data;
   },
 );
 

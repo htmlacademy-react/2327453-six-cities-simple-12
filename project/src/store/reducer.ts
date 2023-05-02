@@ -92,8 +92,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setAuthorizationStatus, (state, action) => {
       state.isReviewsLoadingInProgress = action.payload;
-    })
-  ;
+    });
 });
 
 export {reducer};
