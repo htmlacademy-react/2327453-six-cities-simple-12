@@ -13,6 +13,7 @@ import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
 import {User} from '../types/user';
+import {saveToken} from "../services/token";
 
 const defaultCity = 'Paris';
 
@@ -98,6 +99,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
+      saveToken(state.user.token ?? '');
     });
 });
 
