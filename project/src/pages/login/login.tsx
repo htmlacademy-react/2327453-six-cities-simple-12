@@ -3,14 +3,24 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import {Credentials} from '../../types/credentials';
 import {store} from '../../store';
 import {authenticate} from '../../store/api-actions';
+import {useAppSelector} from '../../hooks';
+import {Navigate} from 'react-router-dom';
+import {AppRoute} from '../../const';
 
 function Login(): JSX.Element {
+  const user = useAppSelector((state) => state.user);
+
   const [credentials, setCredentials] = useState<Credentials>({});
 
   const onInputChangeHandler = ({target} : ChangeEvent<HTMLInputElement>) => {
     const {name, value } = target;
     setCredentials({...credentials, [name]:value});
   };
+
+  if (user)
+  {
+    return <Navigate to={AppRoute.Main}/>;
+  }
 
   return (
     <>
