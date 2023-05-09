@@ -70,6 +70,18 @@ export const authenticate = createAsyncThunk<void, Credentials, {
     dispatch(setUser(data));
   },
 );
+export const logout = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'user/logout',
+  async (_arg, {dispatch, extra: api}) => {
+    await api.delete(APIRoute.Logout);
+    dispatch(setAuthorizationStatus(false));
+    dispatch(setUser(null));
+  },
+);
 
 export const clearErrorAction = createAsyncThunk(
   'clearError',

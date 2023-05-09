@@ -11,7 +11,8 @@ export const Cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', '
 export enum APIRoute {
   Offers = '/hotels',
   Reviews = '/comments',
-  Login = '/login'
+  Login = '/login',
+  Logout = '/logout'
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;

@@ -1,7 +1,9 @@
 import {useAppSelector} from '../../hooks';
 import {AppRoute} from '../../const';
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import {Link} from 'react-router-dom';
+import {logout} from '../../store/api-actions';
+import {store} from '../../store';
 
 function Header(): JSX.Element {
   const isAuthorized = useAppSelector((state) => state.authorizationStatus);
@@ -28,7 +30,11 @@ function Header(): JSX.Element {
                       </div>
                     </li>
                     <li className='header__nav-item'>
-                      <a className='header__nav-link' href='#'>
+                      <a className='header__nav-link' href='#' onClick={(event: MouseEvent<HTMLElement>) => {
+                        event.preventDefault();
+                        store.dispatch(logout());
+                      }}
+                      >
                         <span className='header__signout'>Sign out</span>
                       </a>
                     </li>

@@ -11,4 +11,4 @@ export const setError = createAction<string | null>('setError');
 export const setOffersLoadingStatus = createAction<boolean>('setOffersLoadingStatus');
 export const setReviewsLoadingStatus = createAction<boolean>('setReviewsLoadingStatus');
 export const setAuthorizationStatus = createAction<boolean>('setAuthorizationStatus');
-export const setUser = createAction<User>('setUser');
+export const setUser = createAction<User | null>('setUser');

@@ -99,7 +99,7 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
-      saveToken(state.user.token ?? '');
+      saveToken(state.user?.token ?? '');
     });
 });
 
