@@ -94,7 +94,7 @@ const reducer = createReducer(initialState, (builder) => {
       state.isReviewsLoadingInProgress = action.payload;
     })
     .addCase(setAuthorizationStatus, (state, action) => {
-      state.isReviewsLoadingInProgress = action.payload;
+      state.authorizationStatus = action.payload;
     })
     .addCase(setUser, (state, action) => {
       state.user = action.payload;
