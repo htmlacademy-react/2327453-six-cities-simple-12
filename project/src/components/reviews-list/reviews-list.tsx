@@ -4,6 +4,7 @@ import {store} from '../../store';
 import {loadReviewsAction} from '../../store/api-actions';
 import {useAppSelector} from '../../hooks';
 import LoadingScreen from '../../pages/loading-screen/loading-screen';
+import {useEffect} from 'react';
 
 type ReviewsListProps = {
   offerId : string | undefined;
@@ -12,14 +13,16 @@ type ReviewsListProps = {
 function ReviewsList({offerId}: ReviewsListProps): JSX.Element {
   const reviews = useAppSelector((state) => state.reviews);
 
-  const isLoadingInProgress = useAppSelector((state) => state.isOffersLoadingInProgress);
+  useEffect(() => {
+    if(offerId) {
+      store.dispatch(loadReviewsAction(offerId));
+    }
+  }, [offerId]);
+
+  const isLoadingInProgress = useAppSelector((state) => state.isReviewsLoadingInProgress);
 
   if (isLoadingInProgress) {
     return <LoadingScreen />;
-  }
-
-  if(offerId && ! reviews.length) {
-    store.dispatch(loadReviewsAction(offerId));
   }
 
   return (

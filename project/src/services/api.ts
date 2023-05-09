@@ -1,9 +1,11 @@
-import axios, {AxiosError, AxiosInstance, AxiosResponse} from 'axios';
+import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import {StatusCodes} from 'http-status-codes';
 import {processErrorHandle} from './process-error-handle';
+import {getToken} from './token';
 
 const BACKEND_URL = 'https://12.react.pages.academy/six-cities-simple';
 const REQUEST_TIMEOUT = 5000;
+const TOKEN_HEADER_NAME = 'x-token';
 
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.BAD_REQUEST]: true,
@@ -18,6 +20,18 @@ export const createAPI = (): AxiosInstance => {
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT
   });
+
+  api.interceptors.request.use(
+    (config: AxiosRequestConfig) => {
+      const token = getToken();
+
+      if (token && config.headers) {
+        config.headers[TOKEN_HEADER_NAME] = token;
+      }
+
+      return config;
+    }
+  );
 
   api.interceptors.response.use(
     (response) => response,

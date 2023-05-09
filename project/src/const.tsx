@@ -1,7 +1,7 @@
 export enum AppRoute {
   Main = '/',
   Login = '/login',
-  Property = '/offer/:id',
+  Property = '/:city/offers/:id',
   City = '/:city',
   NotFound = '*',
 }
@@ -10,7 +10,9 @@ export const Cities = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', '
 
 export enum APIRoute {
   Offers = '/hotels',
-  Reviews = '/comments'
+  Reviews = '/comments',
+  Login = '/login',
+  Logout = '/logout'
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;
