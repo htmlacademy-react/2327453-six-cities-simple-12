@@ -13,7 +13,7 @@ import {Sorting} from '../types/sorting';
 import {Offers} from '../types/offer';
 import {Reviews} from '../types/review';
 import {User} from '../types/user';
-import {saveToken} from "../services/token";
+import {saveToken} from '../services/token';
 
 const defaultCity = 'Paris';
 
